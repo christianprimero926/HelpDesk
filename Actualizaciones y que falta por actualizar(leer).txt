@@ -1,0 +1,11 @@
+##Calendario
+-Se incorporo el calendario(no es funcional aun)
+-se creo su respectivo modelo, con su migracion y controlador
+-se creo un factory para este con 100 elementos
+##Vista App
+-se modifico ya que se encontraba un error al incorporar el calendario
+-se organizo un poco
+#se hicieron validaciones pequeñas para el tipo de usuario
+#no se han implementado el formulario para crear usuarios
+#falta agregarle campos al formulario de reportar una incidencia
+#falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango  

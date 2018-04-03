@@ -14,7 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Calendar Asignament
+Route::get('/calendario', function () {
+    return view('calendar');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
