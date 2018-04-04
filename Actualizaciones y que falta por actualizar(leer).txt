@@ -8,4 +8,6 @@
 #se hicieron validaciones pequeñas para el tipo de usuario
 #no se han implementado el formulario para crear usuarios
 #falta agregarle campos al formulario de reportar una incidencia
-#falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango  
+#falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango 
+
+#se agrego a pulga al repositorio 
