@@ -10,10 +10,6 @@
 #falta agregarle campos al formulario de reportar una incidencia
 #falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango 
 
-<<<<<<< HEAD
 #se agrego a pulga al repositorio hola :v
 prueba desde donde pulga
 pppp
-=======
-#se agrego a pulga al repositorio hola :v ,,,,,
->>>>>>> 962a5286b53c1d2bff59b228ccd242c9c5d65840
