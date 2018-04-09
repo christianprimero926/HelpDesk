@@ -13,8 +13,9 @@ class UserController extends Controller
 {
     public function index()
 	{
-		$users = User::where('profile_id', 2)->get();
-		$profiles = Profile::all();
+		$users = User::whereNotIn('profile_id',[1,3])->get();
+		//$profiles = Profile::all();
+		$profiles = Profile::withTrashed()->get();
 		
 		return view('admin.users.index')->with(compact('users', 'profiles'));
 	}
@@ -25,6 +26,7 @@ class UserController extends Controller
 			'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6',
+            'profile_id' => 'sometimes|exists:profiles,id',
 
 		];
 		$messages = [
@@ -38,6 +40,7 @@ class UserController extends Controller
 
 			'password.required' => 'Olvido ingresar la contraseña.',
 			'password.min' => 'La contraseña debe presentar al menos 6 caracteres.',
+			'profile_id.exists' => 'El perfil seleccionado no existe en nuestra base de datos.',
 		];
 		$this->validate($request, $rules, $messages);
 
@@ -45,7 +48,7 @@ class UserController extends Controller
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->password = bcrypt($request->input('password'));
-		$user->profile_id = 2;
+		$user->profile_id = $request->input('profile_id') ?: 2;
 		$user->save();
 		
 		return back()->with('notification', 'Usuario registrado exitosamente.');

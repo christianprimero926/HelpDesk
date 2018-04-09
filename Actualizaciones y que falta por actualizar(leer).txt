@@ -10,6 +10,7 @@
 #falta agregarle campos al formulario de reportar una incidencia
 #falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango 
 
-#se agrego a pulga al repositorio hola :v
-prueba desde donde pulga
-pppp
+#se agrego a pulga al repositorio
+
+#ya se termino la parte de crear perfiles de usuario, ya se crean, se editan y se eliminan logicamente
+#perfiles de usuario, ya se pueden crear usuarios asignandoles un perfil, aun falta asignarles opciones 

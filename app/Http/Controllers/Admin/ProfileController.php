@@ -18,7 +18,13 @@ class ProfileController extends Controller
 
     	Profile::create($request->all());
 
-    	return back()->with('notification', 'La Perfil se ha creado exitosamente.');
+    	return back()->with('notification', 'El Perfil se ha creado exitosamente.');
+    }
+
+    public function edit($id)
+    {
+        $profiles = Profile::find($id);        
+        return view('admin.users.index')->with(compact('profiles'));
     }
 
     public function update(Request $request)
@@ -29,19 +35,25 @@ class ProfileController extends Controller
     		'name.required' => 'Es necesario ingresar un nombre para el perfil.'
     	]);
 
-		$profile_id = $request->input('category_id');
+        $profile_id = $request->input('profile_id');
 
-		$profile = Profile::find($category_id);
-		$profile->name = $request->input('name');
-		$profile->save();    	
+        $profile = Profile::find($profile_id);
+        $profile->name = $request->input('name');
+        $profile->save();       
 
-    	return back()->with('notification', 'La Categoria se ha modificado exitosamente.');
+        return back()->with('notification', 'El Perfil se ha modificado exitosamente.');
     }
 
     public function delete($id)
     {
         Profile::find($id)->delete();
 
-        return back()->with('notification', 'La Categoria se ha deshabilitado exitosamente.');
+        return back()->with('notification', 'La Perfil se ha deshabilitado exitosamente.');
+    }
+    public function restore($id)
+    {
+        Profile::withTrashed()->find($id)->restore();
+
+        return back()->with('notification', 'El Perfil se ha restaurado exitosamente.');
     }
 }

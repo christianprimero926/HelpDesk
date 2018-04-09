@@ -43,10 +43,7 @@ Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel');
 Route::post('/mensajes','MessageController@store');
 
 
-//Profiles
-Route::get('/perfiles', 'ProfileController@store');
-Route::post('/perfil/editar', 'ProfileController@update');
-Route::get('/perfiles/{id}/eliminar', 'ProfileController@delete');
+
 
 
 
@@ -59,6 +56,11 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){
 	Route::get('/usuarios/{id}', 'UserController@edit');
 	Route::post('/usuarios/{id}', 'UserController@update');
 	Route::get('/usuarios/{id}/eliminar', 'UserController@delete');
+	//Profiles
+	Route::post('/perfiles', 'ProfileController@store');
+	Route::post('/perfiles/editar', 'ProfileController@update');
+	Route::get('/perfiles/{id}/eliminar', 'ProfileController@delete');
+	Route::get('/perfiles/{id}/restaurar', 'ProfileController@restore');
 
 	//Project
 	Route::get('/proyectos', 'ProjectController@index');
