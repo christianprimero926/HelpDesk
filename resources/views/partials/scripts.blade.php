@@ -27,6 +27,10 @@
 <script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap datepicker -->
 <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- ChartJS -->
+<script src="/bower_components/Chart.js/Chart.js"></script>
+<!-- jQuery Knob -->
+<script src="/bower_components/jquery-knob/js/jquery.knob.js"></script>
 <!--Select to project-->
 <script src="/js/app.js"></script>
 <!-- JQuery son -->

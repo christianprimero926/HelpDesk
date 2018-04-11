@@ -59,6 +59,12 @@
                 <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
               </a>
+            </li>
+            <li @if(request()->is('correo')) class="active" @endif>
+              <a href="/correo">
+                <i class="fa fa-inbox"></i>
+                <span>Bandeja de entrada</span>
+              </a>
             </li>       
 
             @if(! auth()->user()->is_client)
@@ -83,7 +89,13 @@
               </a>
             </li>
             
-            @if (auth()->user()->is_admin)  
+            @if (auth()->user()->is_admin)
+            <li @if(request()->is('estadisticas')) class="active" @endif>
+              <a href="/estadisticas">
+                <i class="fa fa-pie-chart"></i>
+                <span>Estadisticas</span>
+              </a>
+            </li>  
             <li class="treeview">
               <a>
                 <i class="fa fa-user-circle"></i> <span>Administración</span>
@@ -95,7 +107,6 @@
                 <li><a href="/usuarios"><i class="fa fa-users"></i> Usuarios</a></li>
                 <li><a href="/proyectos"><i class="fa fa-folder-open"></i> Proyectos</a></li>
                 <li><a href="/config"><i class="fa fa-cogs"></i> Configuración</a></li>
-                <li><a href="#"><i class="fa fa-users"></i>Crear Perfiles</a></li>
               </ul>            
             </li>             
             @endif

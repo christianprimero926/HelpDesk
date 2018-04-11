@@ -18,6 +18,20 @@ Route::get('/', function () {
 Route::get('/calendario', function () {
     return view('calendar');
 });
+//statistics charts
+Route::get('/estadisticas', function () {
+    return view('statistics');
+});
+//Mailbox
+Route::get('/correo', function () {
+    return view('mailbox');
+});//New E-mail
+Route::get('/correo/nuevo', function () {
+    return view('newmail');
+});//Read E-mail
+Route::get('/correo/leer', function () {
+    return view('readmail');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
