@@ -20,7 +20,7 @@ class AdminMiddleware
         }
 
 
-        if (auth()->user()->role != 1) //not admin 
+        if (auth()->user()->profile_id != 1) //not admin 
         {
             return redirect('home');
         }

@@ -42,6 +42,11 @@ class HomeController extends Controller
         return view('home')->with(compact('my_incidents', 'pending_incidents', 'incidents_by_me'));
     }
 
+    /**
+     * Funcion para seleccionar un proyecto y ver la informacion de este, si es un usuario de soporte, solo se mostraran los proyectos asignados a este
+     * @param type $id 
+     * @return type
+     */
     public function selectProject($id)
     {
         // Validar que el usuario este asociado con el proyecto

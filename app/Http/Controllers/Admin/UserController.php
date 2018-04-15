@@ -21,28 +21,8 @@ class UserController extends Controller
 	}
 
 	public function store(Request $request)
-	{
-		$rules = [
-			'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-            'profile_id' => 'sometimes|exists:profiles,id',
-
-		];
-		$messages = [
-			'name.required' => 'Es necesario ingresar el nombre del usuario.',
-			'name.max' => 'El nombre es demasiado extenso.',
-
-			'email.required' => 'Es indispensable ingresar el e-mail del usuario.',
-			'email.email' => 'El e-mail ingresado no es valido.',
-			'email.max' => 'El e-mail es demasiado extenso.',
-			'email.unique' => 'Este e-mail ya se encuentra en uso.',
-
-			'password.required' => 'Olvido ingresar la contraseña.',
-			'password.min' => 'La contraseña debe presentar al menos 6 caracteres.',
-			'profile_id.exists' => 'El perfil seleccionado no existe en nuestra base de datos.',
-		];
-		$this->validate($request, $rules, $messages);
+	{		
+		$this->validate($request, User::$rules, User::$messages);
 
 		$user = new User();
 		$user->name = $request->input('name');

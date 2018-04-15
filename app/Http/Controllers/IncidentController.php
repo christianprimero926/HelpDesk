@@ -15,14 +15,21 @@ class IncidentController extends Controller
     {
         $this->middleware('auth');
     }
-
+    /**
+     * Funcion para mostrar los detalles de una incidencia
+     * @param type $id 
+     * @return type
+     */
     public function show($id)
     {
         $incident = Incident::findOrFail($id);
         $messages = $incident->messages;
         return view('incidents.show')->with(compact('incident', 'messages'));
     }
-    
+    /**
+     * Funcion para crear una incidencia, donde por defecto se le asigna la primera categoria
+     * @return type
+     */
     public function create()
     {
         // $project = Project::finf(1);
@@ -30,7 +37,11 @@ class IncidentController extends Controller
         $categories = Category::where('project_id', 1)->get();        
         return view('incidents.create')->with(compact('categories'));
     }
-
+    /**
+     * Funcion que me almacena las incidencias reportadas en la DB
+     * @param Request $request 
+     * @return type
+     */
     public function store(Request $request)
     {
         $this->validate($request, Incident::$rules, Incident::$messages);
@@ -52,6 +63,11 @@ class IncidentController extends Controller
         return back()->with('notification', 'Se ha reportado la incidencia exitosamente.');              
     }
 
+    /**
+     * Funcion para acceder a la vista editar una incidencia
+     * @param type $id 
+     * @return type
+     */
     public function edit($id)
     {
         $incident = Incident::findOrFail($id);
@@ -59,6 +75,12 @@ class IncidentController extends Controller
         return view('incidents.edit')->with(compact('incident', 'categories'));
     }
 
+    /**
+     * Funcion que me permite actualizar una incidencia
+     * @param type $id 
+     * @param Request $request 
+     * @return type
+     */
     public function update($id, Request $request)
     {
         $this->validate($request, Incident::$rules, Incident::$messages);
@@ -73,7 +95,11 @@ class IncidentController extends Controller
 
         return redirect("/ver/$id");
     }
-
+    /**
+     * Funcion que le permite a un usuario de soporte tomar una incidencia, si esta aun no ha sido asignada 
+     * @param type $id 
+     * @return type
+     */
     public function take($id)
     {
         $user = auth()->user();
@@ -99,7 +125,11 @@ class IncidentController extends Controller
 
         return back();
     }
-
+    /**
+     * Funcion para cambiar el estado de una incidencia a resuelta
+     * @param type $id 
+     * @return type
+     */
     public function solve($id)
     {
 
@@ -116,7 +146,11 @@ class IncidentController extends Controller
 
         return back();
     }
-
+    /**
+     * Funcion para volver abrir una incidencia,una vez resuelta
+     * @param type $id 
+     * @return type
+     */
     public function open($id)
     {
         $incident = Incident::findOrFail($id);
@@ -132,7 +166,12 @@ class IncidentController extends Controller
 
         return back();
     }    
-
+    /**
+     * funcion para derivar a una incidencia, en caso de que un usuario de sporte de un nivel no sea capaza de atenderla, se la pasa a un usuario de sgte nivel, hasta que llega a el ultimo y no se puede derivar mas por que no existira mas niveles
+     * si el ultimo usurio de este nivel no es capaz de atenderla,que sucede??
+     * @param type $id 
+     * @return type
+     */
     public function nextLevel($id)
     {
         $incident = Incident::findOrFail($id);
@@ -151,7 +190,12 @@ class IncidentController extends Controller
         }
         return back()->with('notification-warning','No es posible derivar al siguiente nivel, ya que no hay mas niveles.');        
     }
-
+    /**
+     * Funcion para derivar de nivel
+     * @param type $level_id 
+     * @param type $levels 
+     * @return type
+     */
     public function getNextLevelId($level_id, $levels)
     {
         if (sizeof($levels) <= 1) {

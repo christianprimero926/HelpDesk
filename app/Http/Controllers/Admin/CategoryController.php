@@ -8,26 +8,27 @@ use App\Category;
 
 class CategoryController extends Controller
 {
+    /**
+     * Funcion que me permite almacenar las diferentes categorias de un proyecto
+     * @param Request $request 
+     * @return type
+     */
     public function store(Request $request)
     {
-    	$this->validate($request, [
-    		'name' => 'required'
-    	], [
-    		'name.required' => 'Es necesario ingresar un nombre para la categoria.'
-    	]);
+    	$this->validate($request, Categoryt::$rules, Category::$messages);
 
     	Category::create($request->all());
 
     	return back()->with('notification', 'La Categoria se ha registrado exitosamente.');
     }
-
+    /**
+     * Funcion que me permite modificar dichas categorias
+     * @param Request $request 
+     * @return type
+     */
     public function update(Request $request)
     {
-		$this->validate($request, [
-    		'name' => 'required'
-    	], [
-    		'name.required' => 'Es necesario ingresar un nombre para la categoria.'
-    	]);
+		$this->validate($request, Categoryt::$rules, Category::$messages);
 
 		$category_id = $request->input('category_id');
 
@@ -37,7 +38,11 @@ class CategoryController extends Controller
 
     	return back()->with('notification', 'La Categoria se ha modificado exitosamente.');
     }
-
+    /**
+     * Funcion que me elimina categorias de manera manera logica,(para evitarse el dolor de romper relaciones)
+     * @param type $id 
+     * @return type
+     */
     public function delete($id)
     {
         Category::find($id)->delete();

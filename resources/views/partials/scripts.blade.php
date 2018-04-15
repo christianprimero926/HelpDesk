@@ -33,6 +33,8 @@
 <script src="/bower_components/jquery-knob/js/jquery.knob.js"></script>
 <!--Select to project-->
 <script src="/js/app.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- JQuery son -->
 @yield('scripts')
 <!-- Page specific script -->
@@ -71,6 +73,11 @@
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true
+    })
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass   : 'iradio_minimal-blue'
     })    
   })
 </script>

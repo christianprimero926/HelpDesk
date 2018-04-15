@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOptionsTable extends Migration
+class CreatePermitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,15 @@ class CreateOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('options', function (Blueprint $table) {
+        Schema::create('permits', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+
+            $table->integer('menu_id')->unsigned();
+            $table->foreign('menu_id')->references('id')->on('menu');
+
+            $table->integer('profile_id')->unsigned();
+            $table->foreign('profile_id')->references('id')->on('profiles');
+
             $table->timestamps();
         });
     }
@@ -27,6 +33,6 @@ class CreateOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('options');
+        Schema::dropIfExists('permits');
     }
 }

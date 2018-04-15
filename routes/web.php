@@ -70,11 +70,27 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){
 	Route::get('/usuarios/{id}', 'UserController@edit');
 	Route::post('/usuarios/{id}', 'UserController@update');
 	Route::get('/usuarios/{id}/eliminar', 'UserController@delete');
+	
 	//Profiles
+	Route::get('/perfiles', 'ProfileController@index');
 	Route::post('/perfiles', 'ProfileController@store');
 	Route::post('/perfiles/editar', 'ProfileController@update');
 	Route::get('/perfiles/{id}/eliminar', 'ProfileController@delete');
 	Route::get('/perfiles/{id}/restaurar', 'ProfileController@restore');
+
+	//Menu
+	Route::get('/opciones', 'MenuController@index');
+	Route::post('/opciones', 'MenuController@store');
+	Route::get('/opciones/{id}', 'MenuController@edit');
+	Route::post('/opciones/{id}', 'MenuController@update');
+	Route::get('/opciones/{id}/eliminar', 'MenuController@delete');
+
+	//Permits
+	Route::get('/permisos', 'PermitController@index');
+	Route::post('/permisos', 'PermitController@store');
+	Route::get('/permisos/{id}', 'PermitController@edit');
+	Route::post('/permisos/{id}', 'PermitController@update');	
+
 
 	//Project
 	Route::get('/proyectos', 'ProjectController@index');

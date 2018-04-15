@@ -16,3 +16,6 @@
 #perfiles de usuario, ya se pueden crear usuarios asignandoles un perfil, aun falta asignarles opciones 
 #Se incorporo la vista de estadisticas, solo se incorporo no se ha implementado nada
 #se incorpora la vista de mailbox o bandeja de entrada, no se implementa nada
+#ya se asignan permisos segun el perfil o role
+#se modificaron partes de las vistas para hacerlas mas agradables
+#falta aplicar los demas escenarios de interoperabilidad, ademas de generar reportes en pdf

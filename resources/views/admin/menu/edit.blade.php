@@ -4,12 +4,14 @@
 
 <section class="content-header">
       <h1>
-        Reportar Incidencia
-        <small>Editar Incidencia</small>
+        Menú
+        <small>Editar Menú</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Editar Incidencia</li>
+        <li><a><i class="fa fa-user-circle"></i> Administración</a></li>
+        <li><a href="/opciones"><i class="fa fa-bars"></i> Menú</a></li>
+        <li class="active">Editar Menú</li>
       </ol>
 </section>
 <section class="content">
@@ -31,53 +33,41 @@
             @endforeach
         </ul>  
       </div>      
-    @endif
+    @endif  
     <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Editar Incidencia</h3>
+              <h3 class="box-title">Editar Menú</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form action="" method="POST">
               {{ csrf_field() }}
               <div class="box-body">
+                <div class="form-group">
+                  <label>Padre</label>
+                  <select name="id_padre" class="form-control select2" style="width: 100%;">
+                    <option value="">Seleccione una opción</option>
+                    
+                  </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" name="name" class="form-control" value="{{ old('name', $menu->name) }}">
+                </div>
+                <div class="form-group">
+                    <label for="src">Ruta</label>
+                    <input type="text" name="src" class="form-control" value="{{ old('src', $menu->src) }}">
+                </div>
+                <div class="form-group">
+                    <label for="orden">Orden</label>
+                    <input type="text" name="orden" class="form-control" value="{{ old('orden', $menu->orden) }}">
+                </div>
+                <div class="form-group">
+                    <label for="icon">Icono</label>
+                    <input type="text" name="icon" class="form-control" value="{{ old('icon', $menu->icon) }}">
+                    <p>Para mas iconos visitar: <a href="http://fontawesome.io/icons/#web-application" target="blank">Font Awesome</a> </p>
+                </div>
 
-                <div class="form-group">
-                  <label for="category_id">Categoria:</label>
-                  <select name="category_id" class="form-control">
-                    <option value="">General</option>
-                    @foreach($categories as $category)
-                      <option value="{{ $category->id }}" @if($incident->category_id == $category->id) selected @endif>
-                        {{ $category->name }}
-                      </option>
-                    @endforeach
-                  </select>
-                  
-                </div>
-                <div class="form-group">
-                  <label for="severity">Severidad:</label>
-                  <select name="severity" class="form-control">
-                    <option value="M" @if($incident->severity == 'M') selected @endif>
-                      Menor
-                    </option>
-                    <option value="N" @if($incident->severity == 'N') selected @endif>
-                      Normal
-                    </option>
-                    <option value="A" @if($incident->severity == 'A') selected @endif>
-                      Alta
-                    </option>                    
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="title">Titulo:</label>
-                  <input type="text" name="title" class="form-control" value="{{ old('title', $incident->title) }}">
-                </div>                
-                <div class="form-group">
-                  <label for="description">Descripcion:</label>
-                  <textarea name="description" class="form-control">
-                    {{ old('description', $incident->description) }}
-                  </textarea>
-                </div>
               </div>
               <!-- /.box-body -->
 
@@ -87,7 +77,7 @@
                   Guardar Cambios
                 </button>
               </div>
-            </form>
+            </form>           
     </div>
   </div>
 </section>

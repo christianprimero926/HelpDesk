@@ -8,11 +8,13 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       @if (auth()->user()->selected_project_id == null)
-        <div class="alert alert-danger">
-          <ul>                
-            <li>Se requiere escoger un proyecto para ver sus detalles</li>
-          </ul>                        
-        </div>
+        <div class="alert alert-danger alert-dismissible">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+          <ul>
+              <li>Se requiere escoger un proyecto para ver sus detalles</li>
+          </ul>  
+        </div>        
       @endif
       <!-- Content Header (Page header) -->
         <!-- /.row -->

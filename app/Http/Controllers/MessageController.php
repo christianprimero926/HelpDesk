@@ -16,7 +16,11 @@ class MessageController extends Controller
     {
         $this->middleware('auth');
     }
-
+    /**
+     * Funcion para almacenar los mensajes enviados en el foro de discusion
+     * @param Request $request 
+     * @return type
+     */
     public function store(Request $request)
     {
     	$this->validate($request, Message::$rules, Message::$messages);
