@@ -45,9 +45,17 @@
               <div class="box-body">
                 <div class="form-group">
                   <label>Padre</label>
+                  
                   <select name="id_padre" class="form-control select2" style="width: 100%;">
                     <option value="">Seleccione una opción</option>
-                    
+                    @foreach ($menus as $lista)
+                    <option value="{{ $lista->id }}" @if($lista->id) selected @endif>
+                          {{ $lista->id }} - 
+                          {{ $lista->name }} -                           
+                          ( {{ $lista->name_padre }} ) - 
+                          {{ $lista->src }}
+                        </option>
+                    @endforeach
                   </select>
                 </div>
                 <div class="form-group">
@@ -61,6 +69,7 @@
                 <div class="form-group">
                     <label for="orden">Orden</label>
                     <input type="text" name="orden" class="form-control" value="{{ old('orden', $menu->orden) }}">
+                    Orden máximo generado: <label id="label-max-orden">{{$maxOrden}}</label>
                 </div>
                 <div class="form-group">
                     <label for="icon">Icono</label>
@@ -81,6 +90,37 @@
     </div>
   </div>
 </section>
+@endsection
+@section('scripts')
+<script>
+    $("#select-id-padre").change(function () {
+        OnselectMaxOrden('select-id-padre', 'label-max-orden', 'opciones/hijos/')
+    });
 
+    // Función para poner el maximo orden de un padre
+    function OnselectMaxOrden(idSelectPadre, labelHijo, ruta) {
 
+      var selectPadre = document.getElementById(idSelectPadre).value;
+
+      // si no se ha seleccionado nada, entonces dejamos el label vacio
+      if (!selectPadre) {
+          $('#' + labelHijo).html('-');
+          return;
+      }
+
+      //Función AJAX que cambia los valores de la lista dinamicamente
+      $.get(ruta + selectPadre, function (data) {
+
+          //variable que contiene el html que se pondrá en el label
+          var html_select = data;
+
+          if (data == '') {
+              html_select = '0';
+          }
+
+          // cambiamos el html del label
+          $('#' + labelHijo).html(html_select)
+      });
+    }
+</script>
 @endsection

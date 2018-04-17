@@ -56,8 +56,12 @@ class MenuController extends Controller
     {
         /** @var  $menu Menu que es el padre */
         $menu = Menu::find($id);
+        $menus = Menu::all();
+        
+
+
         $maxOrden = $menu->max('orden');
-        return view('admin.menu.edit')->with(compact('menu','maxOrden'));
+        return view('admin.menu.edit')->with(compact('maxOrden','menu','menus'));
     }
 	/**
      * Función que actualiza un menú en la base de datos
@@ -241,8 +245,8 @@ class MenuController extends Controller
                     $etiquetaMenu .= '<ul class="autoCheckbox">';
                     $etiquetaMenu .= '<li class="">';
                     $etiquetaMenu .= '<a href="">';
-                    $etiquetaMenu .= '<label>';
-                    $etiquetaMenu .= '<input type="checkbox" class="minimal" value="' . $menu->id . '" name="menu_id[]" ' . $marcar . ' >&nbsp';
+                    $etiquetaMenu .= '<label class="checkbox">';
+                    $etiquetaMenu .= '<input type="checkbox" value="' . $menu->id . '" name="menu_id[]" ' . $marcar . ' >&nbsp';
                     $etiquetaMenu .= $menu->name;
                     $etiquetaMenu .= '</label>';
                     $etiquetaMenu .= '</a>';
@@ -255,8 +259,8 @@ class MenuController extends Controller
                     $etiquetaMenu .= '<ul class="autoCheckbox">';
                     $etiquetaMenu .= '<li class="treeview">';
                     $etiquetaMenu .= '<a href="#">';
-                    $etiquetaMenu .= '<label>';
-                    $etiquetaMenu .= '<input type="checkbox" class="minimal" value="' . $menu->id . '" name="menu_id[]" ' . $marcar . ' >&nbsp';
+                    $etiquetaMenu .= '<label class="checkbox">';
+                    $etiquetaMenu .= '<input type="checkbox" value="' . $menu->id . '" name="menu_id[]" ' . $marcar . ' >&nbsp';
                     $etiquetaMenu .= $menu->name;
                     $etiquetaMenu .= '</label>';
                     $etiquetaMenu .= '</a>';

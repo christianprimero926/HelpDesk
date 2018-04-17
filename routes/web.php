@@ -84,6 +84,7 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){
 	Route::get('/opciones/{id}', 'MenuController@edit');
 	Route::post('/opciones/{id}', 'MenuController@update');
 	Route::get('/opciones/{id}/eliminar', 'MenuController@delete');
+	Route::get('/opciones/hijos/{id}', 'MenuController@gethijos');
 
 	//Permits
 	Route::get('/permisos', 'PermitController@index');

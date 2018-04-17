@@ -25,7 +25,7 @@ class Menu extends Model
         'orden.unique' => 'No pueden existir dos menús con el mismo orden'
     ];
     protected $table = 'menu';
-    protected $fillable = ['id', 'nombre', 'src', 'orden', 'icon', 'id_padre'];
+    protected $fillable = ['id', 'name', 'src', 'orden', 'icon', 'id_padre'];
     /**
      * Un menú solo tiene un padre
      * relación 1:N
@@ -33,7 +33,7 @@ class Menu extends Model
      */
     public function padre()
     {
-        return $this->hasOne('App\Menu','id','id_padre');
+        return $this->belongsTo('App\Menu','id_padre');
     }
 	/**
     public function scopeSearch($query, $buscar)
@@ -42,12 +42,11 @@ class Menu extends Model
             ->orWhere('src', 'LIKE', "%$buscar%");
     }
     */
-    /**
+    
     public function getNamePadreAttribute()
     {
-        if($this->id == $this->id_padre)
-        	return $this->id->nombre;
-
+        if ($this->padre)
+            return $this->padre->name;
     }
-    */
+    
 }

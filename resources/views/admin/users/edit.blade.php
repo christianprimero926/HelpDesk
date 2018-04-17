@@ -64,6 +64,17 @@
                 <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="text" name="password" class="form-control" value="{{ old('password') }}">
+                </div>
+                <div class="form-group">
+                  <label>Perfil</label>
+                  <select name="profile_id" class="form-control select2" style="width: 100%;">
+                    <option value="">Seleccione Perfil</option>                      
+                    @foreach ($profiles as $profile)
+                      @if( $profile->id != 1 && $profile->id != 3)                      
+                        <option value="{{ $profile->id }}" @if($profile->id) selected @endif>{{ $profile->name }}</option>
+                      @endif
+                    @endforeach
+                  </select>
                 </div>              
               </div>
               <!-- /.box-body -->
@@ -75,7 +86,7 @@
               </button>                
               </div>
             </form>
-
+            @if(auth()->user()->is_support)
             <form action="/proyecto-usuario" method="POST">
               {{ csrf_field() }}
               <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -128,6 +139,7 @@
                 </tbody>
               </table>
             </div>
+            @endif
     </div>
   </div>
 </section>
