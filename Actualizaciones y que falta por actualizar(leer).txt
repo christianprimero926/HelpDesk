@@ -19,3 +19,6 @@
 #ya se asignan permisos segun el perfil o role
 #se modificaron partes de las vistas para hacerlas mas agradables
 #falta aplicar los demas escenarios de interoperabilidad, ademas de generar reportes en pdf
+
+# Se agrego a Danilo al Repositorio
+
