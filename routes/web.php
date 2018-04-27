@@ -58,7 +58,7 @@ Route::post('/mensajes','MessageController@store');
 
 
 
-
+//['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.']
 
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){

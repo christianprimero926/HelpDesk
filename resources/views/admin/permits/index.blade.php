@@ -91,7 +91,7 @@
                 <td>{{ $permiso->profile_name }}</td>
                 <td>{{ $numeroEnlaces[$key] }}</td>
                 <td style="text-align:center">
-                    <a href="/permisos/{{ $permiso->id }}" class="btn btn-sm btn-success" title="Editar/ver">
+                    <a href="/permisos/{{ $permiso->profile_id }}" class="btn btn-sm btn-success" title="Editar/ver">
                         <span class="glyphicon glyphicon-eye-open"></span>
                     </a>
                 </td>
