@@ -50,7 +50,7 @@
       background: transparent !important;
     }
   </style>
-  
+
   <style>
     .loader {
     position: fixed;
@@ -59,8 +59,8 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: url('/dist/img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
-    opacity: .8;
+    background: url('/dist/img/loader.gif') 50% 50% no-repeat rgb(255,255,255);
+    opacity: ;
 }
   </style>
 
