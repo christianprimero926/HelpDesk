@@ -56,7 +56,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input type="text" name="start" class="form-control pull-right" id="datepicker" value="{{ old('start', date('d/m/Y')) }}">
+                      <input type="date" name="start" class="form-control pull-right" id="datepicker" value="{{ old('start', date('d/m/Y')) }}">
                     </div>              
                 </div>      
               </div>
