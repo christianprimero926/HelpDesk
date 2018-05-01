@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-    	$this->validate($request, Categoryt::$rules, Category::$messages);
+    	$this->validate($request, Category::$rules, Category::$messages);
 
     	Category::create($request->all());
 
@@ -28,7 +28,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request)
     {
-		$this->validate($request, Categoryt::$rules, Category::$messages);
+		$this->validate($request, Category::$rules, Category::$messages);
 
 		$category_id = $request->input('category_id');
 

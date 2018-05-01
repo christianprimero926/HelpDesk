@@ -64,6 +64,19 @@
     $('#example4').DataTable()
   })
 </script>
+<!--loader-->
+<script>
+  $(window).on('load', function () {
+      setTimeout(function () {
+    $(".loader").css({visibility:"hidden",opacity:"0"})
+  }, 2000);
+     
+});
+</script>
+
+
+
+
 <!--Select or Dropdowns -->
 <script>
   $(function () {

@@ -86,7 +86,7 @@
               </button>                
               </div>
             </form>
-            @if(auth()->user()->is_support)
+            @if(auth()->user()->is_admin)
             <form action="/proyecto-usuario" method="POST">
               {{ csrf_field() }}
               <input type="hidden" name="user_id" value="{{ $user->id }}">

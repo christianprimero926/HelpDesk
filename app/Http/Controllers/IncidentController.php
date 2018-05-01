@@ -34,7 +34,10 @@ class IncidentController extends Controller
     {
         // $project = Project::finf(1);
         // $categories = $project->categories;
-        $categories = Category::where('project_id', 1)->get();        
+        $user = auth()->user();
+        $selected_project_id = $user->selected_project_id;
+
+        $categories = Category::where('project_id', $selected_project_id)->get();        
         return view('incidents.create')->with(compact('categories'));
     }
     /**

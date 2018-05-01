@@ -2,6 +2,9 @@
 <html>
 @include('partials.head')
 <body class="hold-transition skin-blue sidebar-mini">
+
+  <div class="loader"></div> 
+  
   <div class="wrapper">      
     @include('partials.header')    
     @include('partials.menu')
@@ -30,5 +33,8 @@
   </div>
   <!-- ./wrapper -->
 @include('partials.scripts')
+
+
+
 </body>
 </html>

@@ -50,6 +50,19 @@
       background: transparent !important;
     }
   </style>
+  
+  <style>
+    .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/dist/img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+  </style>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
