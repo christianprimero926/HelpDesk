@@ -12,18 +12,9 @@ class IncidentsTableSeeder extends Seeder
      */
     public function run()
     {
-        Incident::create([
-            'title' => 'Primera Incidencia',
-            'description' => 'Lo que ocurre es que se encontro un problema en la pagina y esta se cierra.',
-            'severity' => 'N', 
-
-            'category_id' => 2,
-            'project_id' => 1,
-            'level_id' => 1,
-
-            'client_id' => 2,
-            'support_id' => 3
-
-        ]);
+        factory(App\Incident::class)
+        ->times(100)
+        ->create();
+        
     }
 }

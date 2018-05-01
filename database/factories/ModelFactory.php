@@ -38,3 +38,25 @@ $factory->define(App\FullCalendarEvent::class, function (Faker\Generator $faker)
         
     ];
 });
+/**
+ * Description
+ * @param type App\FullCalendarEvent::class 
+ * @param function (Faker\Generator $faker 
+ * @return type
+ */
+$factory->define(App\Incident::class, function (Faker\Generator $faker) {
+
+    return [
+    	'title' => $faker->sentence(3),
+        'description' => $faker->sentence(7),
+        'severity' => 'N', 
+
+        'category_id' => 2,
+        'project_id' => 1,
+        'level_id' => 1,
+
+        'client_id' => 1,
+        'support_id' => 3
+    ];
+});
+
