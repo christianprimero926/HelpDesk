@@ -8,10 +8,15 @@ use App\ProjectUser;
 
 class ProjectUserController extends Controller
 {
+    /**
+     * Funcion para asignarle un proyecto a un usuario
+     * @param Request $request 
+     * @return type
+     */
     public function store(Request $request)
     {
 
-    	//Validacione para hacer
+    	//Validaciones para hacer
     	//El nivel pertenezca al proyecto.
     	//Asegurar que el proyecto exista.    	
     	//Asegurar que el nivel exista.    	
@@ -34,7 +39,11 @@ class ProjectUserController extends Controller
 
     	return back()->with('notification', 'Se ha asignado el proyecto exitosamente.');
     }
-
+    /**
+     * Funcion para eliminar un proyecto asignado a un usuario de forma fisica
+     * @param type $id 
+     * @return type
+     */
     public function delete($id)
     {
     	ProjectUser::find($id)->delete();

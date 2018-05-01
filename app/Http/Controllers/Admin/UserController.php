@@ -13,39 +13,22 @@ class UserController extends Controller
 {
     public function index()
 	{
-		$users = User::where('profile_id', 2)->get();
-		$profiles = Profile::all();
+		$users = User::whereNotIn('profile_id',[1,3])->get();
+		//$profiles = Profile::all();
+		$profiles = Profile::withTrashed()->get();
 		
 		return view('admin.users.index')->with(compact('users', 'profiles'));
 	}
 
 	public function store(Request $request)
-	{
-		$rules = [
-			'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6',
-
-		];
-		$messages = [
-			'name.required' => 'Es necesario ingresar el nombre del usuario.',
-			'name.max' => 'El nombre es demasiado extenso.',
-
-			'email.required' => 'Es indispensable ingresar el e-mail del usuario.',
-			'email.email' => 'El e-mail ingresado no es valido.',
-			'email.max' => 'El e-mail es demasiado extenso.',
-			'email.unique' => 'Este e-mail ya se encuentra en uso.',
-
-			'password.required' => 'Olvido ingresar la contraseña.',
-			'password.min' => 'La contraseña debe presentar al menos 6 caracteres.',
-		];
-		$this->validate($request, $rules, $messages);
+	{		
+		$this->validate($request, User::$rules, User::$messages);
 
 		$user = new User();
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->password = bcrypt($request->input('password'));
-		$user->profile_id = 2;
+		$user->profile_id = $request->input('profile_id') ?: 2;
 		$user->save();
 		
 		return back()->with('notification', 'Usuario registrado exitosamente.');
@@ -54,9 +37,10 @@ class UserController extends Controller
 	public function edit($id)
 	{
 		$user = User::find($id);
+		$profiles = Profile::all();
 		$projects = Project::all();
 		$projects_user = ProjectUser::where('user_id', $user->id)->get();
-		return view('admin.users.edit')->with(compact('user', 'projects', 'projects_user'));
+		return view('admin.users.edit')->with(compact('user', 'projects', 'projects_user','profiles'));
 	}
 
 	public function update($id, Request $request)

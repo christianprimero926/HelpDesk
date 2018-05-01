@@ -13,20 +13,24 @@
           <i class="fa fa-comments"></i></button>        
       </div>
     </div>
+    @if (session('notification'))
+      <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <i class="icon fa fa-check"></i>
+        {{ session('notification') }}        
+      </div>      
+    @endif
     @if (count($errors) > 0)
-    <div class="alert alert-danger">
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
-        </ul>                        
-    </div>
-    @endif
-    @if (session('notification'))
-    <div class="alert alert-success">
-        {{ session('notification') }}                      
-    </div>
-    @endif 
+        </ul>  
+      </div>      
+    @endif   
     <!-- /.box-header -->
     <div class="box-body">
       <!-- Conversations are loaded here -->

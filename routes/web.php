@@ -18,6 +18,20 @@ Route::get('/', function () {
 Route::get('/calendario', function () {
     return view('calendar');
 });
+//statistics charts
+Route::get('/estadisticas', function () {
+    return view('statistics');
+});
+//Mailbox
+Route::get('/correo', function () {
+    return view('mailbox');
+});//New E-mail
+Route::get('/correo/nuevo', function () {
+    return view('newmail');
+});//Read E-mail
+Route::get('/correo/leer', function () {
+    return view('readmail');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -43,11 +57,8 @@ Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel');
 Route::post('/mensajes','MessageController@store');
 
 
-//Profiles
-Route::get('/perfiles', 'ProfileController@store');
-Route::post('/perfil/editar', 'ProfileController@update');
-Route::get('/perfiles/{id}/eliminar', 'ProfileController@delete');
 
+//['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.']
 
 
 Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){
@@ -59,6 +70,28 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'], function(){
 	Route::get('/usuarios/{id}', 'UserController@edit');
 	Route::post('/usuarios/{id}', 'UserController@update');
 	Route::get('/usuarios/{id}/eliminar', 'UserController@delete');
+	
+	//Profiles
+	Route::get('/perfiles', 'ProfileController@index');
+	Route::post('/perfiles', 'ProfileController@store');
+	Route::post('/perfiles/editar', 'ProfileController@update');
+	Route::get('/perfiles/{id}/eliminar', 'ProfileController@delete');
+	Route::get('/perfiles/{id}/restaurar', 'ProfileController@restore');
+
+	//Menu
+	Route::get('/opciones', 'MenuController@index');
+	Route::post('/opciones', 'MenuController@store');
+	Route::get('/opciones/{id}', 'MenuController@edit');
+	Route::post('/opciones/{id}', 'MenuController@update');
+	Route::get('/opciones/{id}/eliminar', 'MenuController@delete');
+	Route::get('/opciones/hijos/{id}', 'MenuController@gethijos');
+
+	//Permits
+	Route::get('/permisos', 'PermitController@index');
+	Route::post('/permisos', 'PermitController@store');
+	Route::get('/permisos/{id}', 'PermitController@edit');
+	Route::post('/permisos/{id}', 'PermitController@update');	
+
 
 	//Project
 	Route::get('/proyectos', 'ProjectController@index');

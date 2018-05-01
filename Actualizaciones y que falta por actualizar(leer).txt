@@ -8,8 +8,23 @@
 #se hicieron validaciones pequeñas para el tipo de usuario
 #no se han implementado el formulario para crear usuarios
 #falta agregarle campos al formulario de reportar una incidencia
-#falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango 
+#falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango(solucionado) 
 
+#se agrego a pulga al repositorio
+
+#ya se termino la parte de crear perfiles de usuario, ya se crean, se editan y se eliminan logicamente
+#perfiles de usuario, ya se pueden crear usuarios asignandoles un perfil, aun falta asignarles opciones 
+#Se incorporo la vista de estadisticas, solo se incorporo no se ha implementado nada
+#se incorpora la vista de mailbox o bandeja de entrada, no se implementa nada
+#ya se asignan permisos segun el perfil o role
+#se modificaron partes de las vistas para hacerlas mas agradables
+#falta aplicar los demas escenarios de interoperabilidad, ademas de generar reportes en pdf
+
+# Se agrego a Danilo al Repositorio
+
+<<<<<<< HEAD
 #se agrego a pulga al repositorio hola :v
 prueba desde donde pulga
 hola :)
+=======
+>>>>>>> dadcc21b2a69eea7870c0ddd31e6d5556278ff15

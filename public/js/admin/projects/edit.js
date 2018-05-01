@@ -1,4 +1,5 @@
 $(function(){
+	alert('Nueva ventana');
 	$('[data-category]').on('click', editCategoryModal);
 	$('[data-level]').on('click', editLevelModal);
 });

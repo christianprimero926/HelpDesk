@@ -10,6 +10,26 @@ class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
+    public static $rules = [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6',
+            'profile_id' => 'sometimes|exists:profiles,id',
+
+        ];
+    public static $messages = [
+        'name.required' => 'Es necesario ingresar el nombre del usuario.',
+        'name.max' => 'El nombre es demasiado extenso.',
+
+        'email.required' => 'Es indispensable ingresar el e-mail del usuario.',
+        'email.email' => 'El e-mail ingresado no es valido.',
+        'email.max' => 'El e-mail es demasiado extenso.',
+        'email.unique' => 'Este e-mail ya se encuentra en uso.',
+
+        'password.required' => 'Olvido ingresar la contraseña.',
+        'password.min' => 'La contraseña debe presentar al menos 6 caracteres.',
+        'profile_id.exists' => 'El perfil seleccionado no existe en nuestra base de datos.',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','profile_id',
     ];
 
     /**
@@ -58,40 +78,9 @@ class User extends Authenticatable
     {
         if ($this->profile)
             return $this->profile->name;
-        
-        return 'Invitado';
     }
 
-    public function getMonthAttribute()
-    {
-        switch ($this->created_at) {
-            case 1:
-                return 'Enero';
-            case 2:
-                return 'Febrero';
-            case 3:                
-                return 'Marzo';
-            case 4:                
-                return 'Abril';
-            case 5:                
-                return 'Mayo';
-            case 6:                
-                return 'Junio';
-            case 7:                
-                return 'JUlio';
-            case 8:                
-                return 'Agosto';
-            case 9:                
-                return 'Septiembre';
-            case 10:                
-                return 'Octubre';
-            case 11:                
-                return 'Noviembre';
-            case 12:                
-                return 'Diciembre';
-        }
-    }
-
+    
     public function getListOfProjectsAttribute()
     {
         if($this->profile_id == 2)
@@ -114,17 +103,5 @@ class User extends Authenticatable
     {
         return $this->profile_id == 3;
     }
-
-    public function getChargeAttribute()
-    {
-        switch ($this->profile_id) {
-            case 1:
-                return 'Admin';
-            case 2:
-                return 'Support';            
-            
-            case 3:                
-                return 'Client';
-        }
-    }
+    
 }
