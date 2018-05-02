@@ -22,6 +22,8 @@ class Incident extends Model
         'description.min' => 'La descripción debe presentar al menos 15 caracteres.'
     ];
 
+    //Relationships
+
     protected $appends = ['state'];
 
      public function category()
@@ -43,15 +45,25 @@ class Incident extends Model
     {
     	return $this->belongsTo('App\User', 'support_id');
     }
-    public function client()
-    {
-        return $this->belongsTo('App\User', 'client_id');
-    }
+    
     public function messages()
     {
     	return $this->hasMany('App\Message');
     }
 
+    public function client()
+    {
+        return $this->belongsTo('App\User', 'client_id');
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo('App\Profile'/*,[client->profile_id]*/);
+    }
+
+    //Accesors
+
+    //Severity Name
     public function getSeverityFullAttribute()
     {
     	switch ($this->severity) {
@@ -65,6 +77,7 @@ class Incident extends Model
     	}
     }
 
+    //title short
     public function getTitleShortAttribute()
     {
     	return mb_strimwidth($this->title, 0, 20, '...');
@@ -78,6 +91,13 @@ class Incident extends Model
         
         return 'General';
     }
+
+    //Project Name
+    public function getProjectNameAttribute()
+    {
+        if ($this->project)
+            return $this->project->name;
+    }   
    
     //Support Name
     public function getSupportNameAttribute()
@@ -86,6 +106,26 @@ class Incident extends Model
     		return $this->support->name;
     	
     	return 'Sin asignar';
+    }
+
+    //client Name
+    public function getClientNameAttribute()
+    {
+        if ($this->client)
+            return $this->client->name;
+        
+        return 'Sin asignar';
+    }
+
+    //Profile Name
+    public function getProfileNameAttribute()
+    {
+        if ($this->client)
+            return $this->client->profile_id;
+        /*
+        if ($this->profile)
+            return $this->profile->name;
+        */
     }
 
     //State    

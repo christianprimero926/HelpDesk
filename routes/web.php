@@ -47,11 +47,14 @@ Route::get('/incidencia/{id}/editar', 'IncidentController@edit');
 Route::post('/incidencia/{id}/editar', 'IncidentController@update');
 
 Route::get('/ver/{id}', 'IncidentController@show');
+Route::get('/ver', 'IncidentController@index');
+Route::post('/ver/asignar', 'IncidentController@assign');
 
 Route::get('/incidencia/{id}/atender', 'IncidentController@take');
 Route::get('/incidencia/{id}/resolver', 'IncidentController@solve');
 Route::get('/incidencia/{id}/abrir', 'IncidentController@open');
 Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel');
+
 
 //Messages
 Route::post('/mensajes','MessageController@store');

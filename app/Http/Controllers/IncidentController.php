@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\User;
 use App\Incident;
 use App\Project;
 use App\ProjectUser;
@@ -11,10 +12,41 @@ use App\Message;
 
 class IncidentController extends Controller
 {
+    /**
+     * para verificar que se ha logeado
+     * @return type
+     */
     public function __construct()
     {
         $this->middleware('auth');
     }
+
+    /**
+     * Funcion que me muestra todas las incidencias
+     * @return type
+     */
+    public function index()
+    {
+        $users = User::where('profile_id',2)->get();        
+        $incidents = Incident::all();                
+        return view('incidents.index')->with(compact('incidents','users'));
+    }
+
+    /**
+     * funcion que me permite asignar una incidencia a un usuario
+     * @param Request $request 
+     * @return type
+     */
+    public function assign(Request $request)
+    {
+        $incident_id = $request->input('incident_id');
+        $incident = Incident::find($incident_id);
+        $incident->support_id = $request->input('support_id');
+        $incident->save();
+
+        return back()->with('notification', 'Se ha asignado la incidencia exitosamente.');
+    }
+
     /**
      * Funcion para mostrar los detalles de una incidencia
      * @param type $id 

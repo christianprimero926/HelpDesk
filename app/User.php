@@ -79,7 +79,6 @@ class User extends Authenticatable
         if ($this->profile)
             return $this->profile->name;
     }
-
     
     public function getListOfProjectsAttribute()
     {

@@ -22,3 +22,10 @@
 
 # Se agrego a Danilo al Repositorio
 
+#se creo la vista ver incidencias
+#ya se asignan incidencias a usurios de soporte
+#falta que al mostrar el perfil del usuario me muestre el nombre no el id
+
+#en Documentacion falta terminar la primera entrega
+#no se ha hecho el manual desarrollador
+
