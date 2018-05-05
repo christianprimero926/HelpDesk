@@ -1,7 +1,7 @@
 @section('head')
 
 <style>
-    .loader {
+.loader {
     position: fixed;
     left: 0px;
     top: 0px;
@@ -11,7 +11,7 @@
     background: url('/dist/img/loader.gif') 50% 50% no-repeat rgb(249,249,249);
     opacity: .8;
 }
-  </style>
+</style>
 @endsection
 
 @section('loader')
@@ -19,12 +19,12 @@
 @endsection
 
 @section('scripts')
-    <!--loader-->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<!--loader-->
-	<script type="text/javascript">
+<!--loader-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<!--loader-->
+<script type="text/javascript">
 	$(window).load(function() {
-	    $(".loader").fadeOut("slow");
-	});
-	</script>
+       $(".loader").fadeOut("slow");
+   });
+</script>
 @endsection

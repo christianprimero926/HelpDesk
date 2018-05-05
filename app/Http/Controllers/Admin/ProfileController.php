@@ -49,36 +49,36 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
-		$this->validate($request, Profile::$rules, Profile::$messages);
+      $this->validate($request, Profile::$rules, Profile::$messages);
 
-        $profile_id = $request->input('profile_id');
+      $profile_id = $request->input('profile_id');
 
-        $profile = Profile::find($profile_id);
-        $profile->name = $request->input('name');
-        $profile->save();       
+      $profile = Profile::find($profile_id);
+      $profile->name = $request->input('name');
+      $profile->save();       
 
-        return back()->with('notification', 'El Perfil se ha modificado exitosamente.');
-    }
-    /**
+      return back()->with('notification', 'El Perfil se ha modificado exitosamente.');
+  }
+  /**
      * Funcion para eliminar un perfil de forma logica
      * @param type $id 
      * @return type
      */
-    public function delete($id)
-    {
-        Profile::find($id)->delete();
+  public function delete($id)
+  {
+    Profile::find($id)->delete();
 
-        return back()->with('notification', 'La Perfil se ha deshabilitado exitosamente.');
-    }
-    /**
+    return back()->with('notification', 'La Perfil se ha deshabilitado exitosamente.');
+}
+/**
      * Funcion para habilitar el perfil en caso de que se requiera
      * @param type $id 
      * @return type
      */
-    public function restore($id)
-    {
-        Profile::withTrashed()->find($id)->restore();
+public function restore($id)
+{
+    Profile::withTrashed()->find($id)->restore();
 
-        return back()->with('notification', 'El Perfil se ha restaurado exitosamente.');
-    }
+    return back()->with('notification', 'El Perfil se ha restaurado exitosamente.');
+}
 }

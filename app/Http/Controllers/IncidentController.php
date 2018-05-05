@@ -27,8 +27,11 @@ class IncidentController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $selected_project_id = $user->selected_project_id;
+
         $users = User::where('profile_id',2)->get();        
-        $incidents = Incident::all();                
+        $incidents = Incident::where('project_id', $selected_project_id)->get();                
         return view('incidents.index')->with(compact('incidents','users'));
     }
 
@@ -41,6 +44,16 @@ class IncidentController extends Controller
     {
         $incident_id = $request->input('incident_id');
         $incident = Incident::find($incident_id);
+        $incident->support_id = $request->input('support_id');
+        $incident->save();
+
+        return back()->with('notification', 'Se ha asignado la incidencia exitosamente.');
+    }
+
+    public function reassign(Request $request)
+    {
+        $incident_id = $request->input('incident_id');
+        $incident = Incident::findOrFail($incident_id);
         $incident->support_id = $request->input('support_id');
         $incident->save();
 
@@ -80,7 +93,7 @@ class IncidentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, Incident::$rules, Incident::$messages);
-                
+        
         $incident = new Incident();
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');
@@ -119,7 +132,7 @@ class IncidentController extends Controller
     public function update($id, Request $request)
     {
         $this->validate($request, Incident::$rules, Incident::$messages);
-                
+        
         $incident = Incident::findOrFail($id);
         $incident->category_id = $request->input('category_id') ?: null;
         $incident->severity = $request->input('severity');

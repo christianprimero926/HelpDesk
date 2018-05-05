@@ -12,25 +12,25 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 //Calendar Asignament
 Route::get('/calendario', function () {
-    return view('calendar');
+	return view('calendar');
 });
 //statistics charts
 Route::get('/estadisticas', function () {
-    return view('statistics');
+	return view('statistics');
 });
 //Mailbox
 Route::get('/correo', function () {
-    return view('mailbox');
-});//New E-mail
+	return view('mailbox');
+	});//New E-mail
 Route::get('/correo/nuevo', function () {
-    return view('newmail');
-});//Read E-mail
+	return view('newmail');
+	});//Read E-mail
 Route::get('/correo/leer', function () {
-    return view('readmail');
+	return view('readmail');
 });
 Auth::routes();
 
@@ -49,6 +49,7 @@ Route::post('/incidencia/{id}/editar', 'IncidentController@update');
 Route::get('/ver/{id}', 'IncidentController@show');
 Route::get('/ver', 'IncidentController@index');
 Route::post('/ver/asignar', 'IncidentController@assign');
+Route::post('/ver/reasignar', 'IncidentController@reassign');
 
 Route::get('/incidencia/{id}/atender', 'IncidentController@take');
 Route::get('/incidencia/{id}/resolver', 'IncidentController@solve');

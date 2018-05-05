@@ -10,32 +10,32 @@
     <p class="login-box-msg">Register a new membership</p>
 
     <form action="{{ route('register') }}" method="POST">
-        {{ csrf_field() }}
+      {{ csrf_field() }}
       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
         <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Full name" required autofocus>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
         @if ($errors->has('name'))
-            <span class="help-block">
-                <strong>{{ $errors->first('name') }}</strong>
-            </span>
+        <span class="help-block">
+          <strong>{{ $errors->first('name') }}</strong>
+        </span>
         @endif
       </div>
       <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
         <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail Address" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
-            <span class="help-block">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
+        <span class="help-block">
+          <strong>{{ $errors->first('email') }}</strong>
+        </span>
         @endif
       </div>
       <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
         <input id="password" type="password" class="form-control" name="password"  placeholder="Password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
-            <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
-            </span>
+        <span class="help-block">
+          <strong>{{ $errors->first('password') }}</strong>
+        </span>
         @endif
       </div>
       <div class="form-group has-feedback">
@@ -61,9 +61,9 @@
     <div class="social-auth-links text-center">
       <p>- OR -</p>
       <a href="{{ route('social.auth', 'facebook') }}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign up using
-        Facebook</a>
+      Facebook</a>
       <a href="{{ route('social.auth', 'google') }}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign up using
-        Google+</a>
+      Google+</a>
     </div>
 
     <a href="{{ route('login') }}" class="btn btn-link">I already have a membership</a>

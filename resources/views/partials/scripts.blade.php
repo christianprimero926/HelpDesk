@@ -40,12 +40,12 @@
 <!-- Page specific script -->
 <!-- Scripts -->
 <script> 
-     window.Laravel = <?php echo json_encode([
-         'csrfToken' => csrf_token(),
-    ]); ?>
-</script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
+ window.Laravel = <?php echo json_encode([
+   'csrfToken' => csrf_token(),
+   ]); ?>
+ </script>
+ <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+ <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!--Datatables-->
@@ -67,16 +67,12 @@
 <!--loader-->
 <script>
   $(window).on('load', function () {
-      setTimeout(function () {
-    $(".loader").css({visibility:"hidden",opacity:"0"})
-  }, 2000);
-     
-});
+    setTimeout(function () {
+      $(".loader").css({visibility:"hidden",opacity:"0"})
+    }, 2000);
+
+  });
 </script>
-
-
-
-
 <!--Select or Dropdowns -->
 <script>
   $(function () {

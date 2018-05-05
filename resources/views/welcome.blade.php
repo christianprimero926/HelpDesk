@@ -1,33 +1,22 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8" />    
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
     <title>Gestion de Incidencias</title>
-
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-
-
-
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/assets/css/paper-kit.css?v=2.0.1" rel="stylesheet"/>
     <link href="/assets/css/demo.css" rel="stylesheet" />
-
     <!--     Fonts and icons     -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-    
-
 </head>
-
 <body>
     <nav class="navbar navbar-toggleable-md fixed-top navbar-transparent" color-on-scroll="500">
         <div class="container">
@@ -104,8 +93,7 @@
 
             </div>            
         </div>
-        
-
+    </div>
 </body>
 <!-- Scripts -->
 <script>
@@ -118,19 +106,14 @@
 <script src="assets/js/jquery-ui-1.12.1.custom.min.js" type="text/javascript"></script>
 <script src="assets/js/tether.min.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-
 <!-- Switches -->
 <script src="assets/js/bootstrap-switch.min.js"></script>
-
 <!--  Plugins for Slider -->
 <script src="assets/js/nouislider.js"></script>
-
 <!--  Plugins for DateTimePicker -->
 <script src="assets/js/moment.min.js"></script>
 <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
-
 <!--  Paper Kit Initialization and functons -->
 <script src="assets/js/paper-kit.js?v=2.0.1"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 </html>
