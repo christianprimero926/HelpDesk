@@ -22,6 +22,20 @@
 //         'remember_token' => str_random(10),
 //     ];
 // });
+// 
+   
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+     static $password;
+
+     return [
+         'name' => $faker->name,
+         'email' => $faker->unique()->safeEmail,
+         'password' => $password ?: $password = bcrypt('secret'),
+         'remember_token' => str_random(10),
+         'profile_id' => $faker->numberBetween($min = 2, $max = 3)
+     ];
+});
+
 /**
  * Event's Create 
  * @param type App\FullCalendarEvent::class 
@@ -38,6 +52,7 @@ $factory->define(App\FullCalendarEvent::class, function (Faker\Generator $faker)
         
     ];
 });
+//$faker->numberBetween($min = 1000, $max = 9000);
 /**
  * Description
  * @param type App\FullCalendarEvent::class 
@@ -48,7 +63,7 @@ $factory->define(App\Incident::class, function (Faker\Generator $faker) {
 
     return [
     	'title' => $faker->sentence(3),
-        'description' => $faker->sentence(7),
+        'description' => $faker->text,
         'severity' => 'N', 
 
         'category_id' => 2,
@@ -59,4 +74,3 @@ $factory->define(App\Incident::class, function (Faker\Generator $faker) {
         'support_id' => 3
     ];
 });
-

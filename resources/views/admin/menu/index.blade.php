@@ -67,6 +67,10 @@
             <input type="text" name="src" class="form-control" value="{{ old('src') }}">
           </div>
           <div class="form-group">
+            <label for="src">Nombre de la ruta</label>
+            <input type="text" name="as" class="form-control" value="{{ old('as') }}">
+          </div>
+          <div class="form-group">
             <label for="orden">Orden</label>
             <input type="text" name="orden" class="form-control" value="{{ old('orden') }}">
             Orden máximo generado: <label id="label-max-orden" />   
@@ -93,6 +97,7 @@
               <th>ID</th>
               <th>Nombre</th>
               <th>Ruta</th>
+              <th>Nombre de la ruta</th>
               <th>Orden</th>
               <th>Padre</th>
               <th>Opciones</th> 
@@ -105,6 +110,7 @@
               <td>{{ $menu->id }}</td>
               <td>{{ $menu->name }}</td>
               <td>{{ $menu->src }}</td>
+              <td>{{ $menu->as }}</td>
               <td>{{ $menu->orden }}</td>
               <td>{{ $menu->name_padre }}</td>
               <td style="text-align:center">

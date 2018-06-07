@@ -43,7 +43,7 @@
         <div class="box-body">
 
           <div class="form-group">
-            <label for="category_id">Categoria:</label>
+            <label for="category_id">Modulo:</label>
             <select name="category_id" class="form-control select2" style="width: 100%;">
               <option value="">Seleccione una opción</option>                      
               @foreach ($categories as $category)                                           

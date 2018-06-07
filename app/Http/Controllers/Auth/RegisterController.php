@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'avatar' => $data['avatar'],
         ]);
     }
 
@@ -91,19 +92,25 @@ class RegisterController extends Controller
         try {
             
             $socialUser = Socialite::driver($provider)->user();
+            $imagen = $socialUser->getAvatar();
+           // dd($imagen);
 
         } catch (Exception $e) {
             return redirect('/');
         }
+        
         //check if we have logged provider
         $socialProvider = SocialProvider::Where('provider_id', $socialUser->getId())->first();
         if (! $socialProvider) {
 
+            
+
             //create a new user and provider
-            $user = User::firstOrCreate(
-                ['email' => $socialUser->getEmail()],
+            $user = User::updateOrCreate(
+                ['avatar' => $socialUser->getAvatar(), 'email' => $socialUser->getEmail()],
                 ['name' => $socialUser->getName()]
             );
+
 
             $user->socialProvider()->create(
                 ['provider_id' => $socialUser->getId(), 'provider' => $provider]

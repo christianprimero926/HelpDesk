@@ -20,6 +20,7 @@ class CreateMenusTable extends Migration
             $table->integer('orden');
             $table->string('icon');
             $table->integer('id_padre');
+            $table->string('as');
             
             $table->timestamps();
         });

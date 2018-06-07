@@ -15,27 +15,21 @@ $menu = MenuController::construirMenu(0, $userLogeado);
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="/dist/img/avatar.png" class="img-circle" alt="User Image">
+        @if(auth()->user()->avatar == NULL)
+        <img src="/dist/img/avatar.png" class="img-circle" alt="{{ Auth::user()->name }}">
+        @else
+        <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="{{ Auth::user()->name }}">
+        @endif        
       </div>
       <div class="pull-left info">
-        <p>{{ Auth::user()->name }}</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <br>
+        <p>{{ Auth::user()->name_short }}</p>        
       </div>
     </div>
-    <!-- search form -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-          <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-          </button>
-        </span>
-      </div>
-    </form>
-    <!-- /.search form -->
+    
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">Elegir Proyecto</li>
+      <li class="header">Elegir Empresa</li>
       <li class="form-inline">
         <a>
           <i class="fa fa-list-alt"></i>
@@ -62,12 +56,14 @@ $menu = MenuController::construirMenu(0, $userLogeado);
           <span>Dashboard</span>
         </a>
       </li>
+      <!--
       <li @if(request()->is('correo')) class="active" @endif>
         <a href="/correo">
           <i class="fa fa-inbox"></i>
           <span>Bandeja de entrada</span>
         </a>
       </li>
+    -->
       <!-- Llamamos a la variable que contiene el menú -->
       {!! $menu !!}
       @endif               

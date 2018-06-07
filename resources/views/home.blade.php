@@ -13,6 +13,13 @@
 </section>
 <section class="content">
   <div class="box-body">
+    @if (session('notification-warning'))
+    <div class="alert alert-warning alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <i class="icon fa fa-warning"></i> 
+        {{ session('notification-warning') }}
+    </div>    
+    @endif
     <div class="row">
       @if (auth()->user()->is_support)
       <div class="col-xs-12">

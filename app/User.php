@@ -37,7 +37,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','profile_id',
+        'name', 'email', 'password','profile_id','avatar',
     ];
 
     /**
@@ -101,6 +101,11 @@ class User extends Authenticatable
     public function getIsClientAttribute()
     {
         return $this->profile_id == 3;
+    }
+
+    public function getNameShortAttribute()
+    {
+        return mb_strimwidth($this->name, 0, 20, '...');
     }
     
 }
