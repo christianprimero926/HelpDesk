@@ -128,6 +128,12 @@ class Incident extends Model
         */
     }
 
+    public function getAvatarClientAttribute()
+    {
+        if($this->client)
+            return $this->client->avatar;
+    }
+
     //State    
     public function getStateAttribute()
     {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Incident;
 use App\ProjectUser;
+use App\User;
 
 class HomeController extends Controller
 {

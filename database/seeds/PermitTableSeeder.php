@@ -56,5 +56,29 @@ class PermitTableSeeder extends Seeder
 			'menu_id' => 11,
 			'profile_id' => 1        	
 		]);
+		Permit::create([
+			'menu_id' => 12,
+			'profile_id' => 1        	
+		]);
+		Permit::create([
+			'menu_id' => 13,
+			'profile_id' => 1        	
+		]);
+		Permit::create([
+			'menu_id' => 14,
+			'profile_id' => 1        	
+		]);
+		Permit::create([
+			'menu_id' => 15,
+			'profile_id' => 1        	
+		]);
+		Permit::create([
+			'menu_id' => 16,
+			'profile_id' => 1        	
+		]);
+		Permit::create([
+			'menu_id' => 17,
+			'profile_id' => 1        	
+		]);			
 	}
 }

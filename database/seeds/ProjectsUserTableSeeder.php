@@ -14,13 +14,13 @@ class ProjectsUserTableSeeder extends Seeder
     {
         ProjectUser::create([
         	'project_id' => 1,
-        	'user_id' => 3,
+        	'user_id' => 2,
         	'level_id' => 1        	
         ]);
 
         ProjectUser::create([
         	'project_id' => 1,
-        	'user_id' => 4,
+        	'user_id' => 2,
         	'level_id' => 2        	
         ]);       
     }

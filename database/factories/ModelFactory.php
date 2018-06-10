@@ -71,6 +71,6 @@ $factory->define(App\Incident::class, function (Faker\Generator $faker) {
         'level_id' => 1,
 
         'client_id' => 1,
-        'support_id' => 3
+        'support_id' => 2
     ];
 });

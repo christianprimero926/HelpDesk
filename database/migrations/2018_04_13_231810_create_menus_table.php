@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->string('icon');
             $table->integer('id_padre');
             $table->string('as');
+            $table->integer('show');
             
             $table->timestamps();
         });

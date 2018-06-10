@@ -70,7 +70,7 @@
               <option value="">Seleccione Perfil</option>                      
               @foreach ($profiles as $profile)
               @if( $profile->id != 1 && $profile->id != 3)                      
-              <option value="{{ $profile->id }}" @if($profile->id) selected @endif>{{ $profile->name }}</option>
+              <option value="{{ $user->profile_id }}" @if($user->profile_id) selected @endif>{{ $user->profile_name }}</option>
               @endif
               @endforeach
             </select>

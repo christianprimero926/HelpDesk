@@ -53,7 +53,7 @@
                                 <!--Algun icono para Home-->
                                 <li class="dropdown-item"><a href="/home">Dashboard</a></li>
                                 <!--Algun icono para perfil-->
-                                <li class="dropdown-item"><a href="#pk">Mi Perfil</a></li>
+                                <li class="dropdown-item"><a href="/perfil">Mi Perfil</a></li>
                                 <!--Algun icono de configuracion-->
                                 <li class="dropdown-item"><a href="#pk">Configuracion</a></li>
                                 <div class="dropdown-divider"></div>

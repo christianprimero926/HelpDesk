@@ -45,7 +45,7 @@
               <span class="direct-chat-timestamp pull-right">{{ $message->created_at }}</span>
             </div>
             <!-- /.direct-chat-info -->
-            <img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+            <img class="direct-chat-img" src="{{$message->user->avatar}}" alt="Message User Image"><!-- /.direct-chat-img -->
             <div class="direct-chat-text">
               {{ $message->message }}
             </div>
@@ -61,7 +61,7 @@
               <span class="direct-chat-timestamp pull-left">{{ $message->created_at }}</span>
             </div>
             <!-- /.direct-chat-info -->
-            <img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="Message User Image"><!-- /.direct-chat-img -->
+            <img class="direct-chat-img" src="{{$message->user->avatar}}" alt="Message User Image"><!-- /.direct-chat-img -->
             <div class="direct-chat-text">
               {{ $message->message }}
             </div>
@@ -80,7 +80,7 @@
           <ul class="contacts-list">
             <li>
               <a href="#">
-                <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Image">
+                <img class="contacts-list-img" src="{{$message->user->avatar}}" alt="User Image">
 
                 <div class="contacts-list-info">
                   <span class="contacts-list-name">

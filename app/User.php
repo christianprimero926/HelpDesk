@@ -71,6 +71,8 @@ class User extends Authenticatable
         return ProjectUser::where('user_id', $this->id)->where('level_id', $incident->level_id)->first();
     }
 
+    
+
     /**Accessors**/
 
     //Profile Name
@@ -107,5 +109,6 @@ class User extends Authenticatable
     {
         return mb_strimwidth($this->name, 0, 20, '...');
     }
+    
     
 }

@@ -67,7 +67,7 @@
             <input type="text" name="src" class="form-control" value="{{ old('src') }}">
           </div>
           <div class="form-group">
-            <label for="src">Nombre de la ruta</label>
+            <label for="as">Nombre de la ruta</label>
             <input type="text" name="as" class="form-control" value="{{ old('as') }}">
           </div>
           <div class="form-group">

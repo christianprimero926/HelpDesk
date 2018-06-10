@@ -39,6 +39,7 @@ class MenuController extends Controller
 		$menu->orden = $request->input('orden');
 		$menu->icon = $request->input('icon');
 		$menu->id_padre = $request->input('id_padre');
+        $menu->as = $request->input('as');
 		if ($menu->icon == '') {
             $menu->icon = 'fa fa-circle-o';
         }
@@ -170,7 +171,8 @@ class MenuController extends Controller
                  */
                 $numeroHijos = self::tieneHijos($menu->id);
 
-                if ($numeroHijos && $tienePermiso) {
+
+                if ($numeroHijos && $tienePermiso && $menu->show == 1 ) {
 
                     $etiquetaMenu .= '<li class="treeview">';
                     $etiquetaMenu .= '<a href="' . url($menu->src) . '">';
@@ -184,7 +186,7 @@ class MenuController extends Controller
                     $etiquetaMenu .= '</ul>';
 
                     $etiquetaMenu .= '</li>';
-                } else if ($tienePermiso) {
+                } else if ($tienePermiso && $menu->show == 1) {
                     $etiquetaMenu .= '<li>';
                     $etiquetaMenu .= '<a href="' . url($menu->src) . '">';
                     $etiquetaMenu .= '<i class="' . $menu->icon . '"></i>';
@@ -208,7 +210,7 @@ class MenuController extends Controller
     static public function construirMenuCompleto($id_padre = 0, $id)
     {
 
-        $etiquetaMenu = '';
+        $etiquetaMenu = '';        
         $menus = Menu::where('id_padre', $id_padre)->get();
         $totalMenus = $menus->count();
 
@@ -239,8 +241,8 @@ class MenuController extends Controller
                  * true si tiene hijos, false si no tiene
                  */
                 $numeroHijos = self::tieneHijos($menu->id);
-
-                if ($numeroHijos) {
+                
+                if ($numeroHijos) {                   
 
                     $etiquetaMenu .= '<ul class="autoCheckbox">';
                     $etiquetaMenu .= '<li class="">';
@@ -267,6 +269,7 @@ class MenuController extends Controller
                     $etiquetaMenu .= '</li>';
                     $etiquetaMenu .= '</ul>';
                 }
+                
 
             }
         }

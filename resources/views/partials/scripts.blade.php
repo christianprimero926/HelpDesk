@@ -28,11 +28,13 @@
 <!-- bootstrap datepicker -->
 <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- ChartJS -->
-<script src="/bower_components/Chart.js/Chart.js"></script>
+<!--<script src="/bower_components/Chart.js/Chart.js"></script>-->
 <!-- jQuery Knob -->
 <script src="/bower_components/jquery-knob/js/jquery.knob.js"></script>
 <!--Select to project-->
 <script src="/js/app.js"></script>
+<script type="/js/highcharts.js"></script>
+<script type="/js/graficas.js"></script>
 <!-- iCheck 1.0.1 -->
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 <!-- JQuery son -->
