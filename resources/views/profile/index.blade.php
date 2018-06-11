@@ -77,12 +77,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-at margin-r-5"></i> Correo Electronico</strong>
+              <strong><i class="fa fa-at margin-r-5"></i> Correo electrónico</strong>
               <p class="text-muted">
                 {{ Auth::user()->email }}
               </p>
               <hr>
-              <strong><i class="fa fa-user margin-r-5"></i> Nombre Completo</strong>
+              <strong><i class="fa fa-user margin-r-5"></i> Nombre completo</strong>
               <p class="text-muted">
                 {{ Auth::user()->name }}
               </p>
@@ -90,7 +90,7 @@
               <strong><i class="fa fa-id-card margin-r-5"></i> ID de usuario</strong>
               <a class="text-muted pull-right">{{ Auth::user()->id }}</a>              
               <hr>
-              <strong><i class="fa fa-user-secret margin-r-5"></i> Rol de Usuario</strong>              
+              <strong><i class="fa fa-user-secret margin-r-5"></i> Rol de usuario</strong>              
                 @if(auth()->user()->is_admin)                
                 <span class="pull-right label label-success">{{ Auth::user()->profile_name }}</span>
                 @elseif(auth()->user()->is_support)

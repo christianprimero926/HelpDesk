@@ -43,6 +43,10 @@ class Project extends Model
     {
     	return $this->hasMany('App\Level');
     }
+    public function incident()
+    {
+        return $this->hasMany('App\Incident');
+    }
 
     //Accessors
     

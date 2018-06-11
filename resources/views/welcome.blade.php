@@ -32,30 +32,17 @@
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::guest())
-                        <li class="nav-item"><a href="#" class="nav-link">
-                            <i class="fa fa-paperclip"></i>
-                          Instrucciones</a>
-                        </li>
-                        <li class="nav-item"><a href="#" class="nav-link">
-                            <i class="fa fa-globe"></i>
-                          Créditos</a>
-                        </li>                    
                         <li class="nav-item"><a href="{{ route('login') }}" class="btn btn-primary btn-round">Login</a></li>
                         <li class="nav-item"><a href="{{ route('register') }}" class="btn btn-primary btn-round">Register</a></li>
                         @else
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }}</a>
                             <ul class="dropdown-menu dropdown-menu-right dropdown-info">
-                                <li class="dropdown-header">
-                                    <!--Algun icono de correo-->
+                                <li class="dropdown-header">                                   
                                     {{ Auth::user()->email }}
-                                </li>
-                                <!--Algun icono para Home-->
-                                <li class="dropdown-item"><a href="/home">Dashboard</a></li>
-                                <!--Algun icono para perfil-->
+                                </li>                                
+                                <li class="dropdown-item"><a href="/home">Dashboard</a></li>                                
                                 <li class="dropdown-item"><a href="/perfil">Mi Perfil</a></li>
-                                <!--Algun icono de configuracion-->
-                                <li class="dropdown-item"><a href="#pk">Configuracion</a></li>
                                 <div class="dropdown-divider"></div>
                                 <li class="dropdown-item">
                                     <!--Algun icono para cerrar sesion-->

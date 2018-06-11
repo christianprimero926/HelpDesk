@@ -9,9 +9,7 @@ use App\Project;
 use App\Profile;
 use App\ProjectUser;
 use App\Incident;
-use App\Message;
-use Image;
-use Auth;
+
 
 /**
 <div class="box-footer box-comments">
@@ -58,57 +56,35 @@ class UserController extends Controller
 {
 	public function profile()
 	{
-		//$user = User::all()->where('id', $id);
-		//dd($user->get('id'));
-		//
-		$user = auth()->user();
 		
-
-		//dd($user->avatar);
+		$user = auth()->user();
         $selected_project_id = $user->selected_project_id;
-
         $users = User::where('profile_id',2)->get();        
         $incidents = Incident::where('project_id', $selected_project_id)->get();
-        //$incident = Incident::($id);
-        $messages = Message::where('incident_id',$incidents);
-        //dd($messages);             
-        
         if($user->is_support){
             $my_incidents = Incident::where('project_id', $selected_project_id)->where('support_id', $user->id)->get();
             $num_my_incidencias = $my_incidents->count();
             $solve_incidents = $my_incidents->where('active', 0)->count();
-            //dd($numIncidencias);
-            //dd($solve_incidents);
-            $projectUser = ProjectUser::where('project_id', $selected_project_id)->where('user_id', $user->id)->first();             
+            $projectUser = ProjectUser::where('project_id', $selected_project_id)->where('user_id', $user->id)->first();
             $pending_incidents = Incident::where('support_id', null)->where('level_id', $projectUser->level_id)->get();
         }
         $incident_total = Incident::all()->count();
-        //dd($incident_total);  
-
-
         $incidents_by_me = Incident::where('client_id', $user->id)->where('project_id', $selected_project_id)->get();
         $num_incidencias_by_me = $incidents_by_me->count();
-        //dd($num_incidencias_by_me);        
         return view('profile.index')->with(compact('incidents','user','my_incidents', 'pending_incidents', 'incidents_by_me', 'num_my_incidencias', 'num_incidencias_by_me', 'incident_total', 'solve_incidents'));
 		
 	}
 	public function update_avatar($id,Request $request)
-	{
-		//dd($request->file('avatar'));
+	{		
 		$user = User::findOrFail($id);
-
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->password = bcrypt($request->input('password'));
-		
-		
-		
 		if ($request->hasFile('avatar')) {
 			$user->avatar = $request->file('avatar')->store('public');
 		}
 		$user->save();
 		return back()->with('notification', 'Imagen Modificada exitosamente.');
-		
 	}
 
     public function index()

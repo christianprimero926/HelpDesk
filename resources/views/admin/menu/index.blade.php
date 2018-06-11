@@ -95,6 +95,7 @@
           <thead>
             <tr>
               <th>ID</th>
+              <th>Icono</th>
               <th>Nombre</th>
               <th>Ruta</th>
               <th>Nombre de la ruta</th>
@@ -108,6 +109,7 @@
             @if($menu->id_padre >= 0)                            
             <tr>
               <td>{{ $menu->id }}</td>
+              <td style="text-align:center"><i class="{{ $menu->icon }}"></i></td>
               <td>{{ $menu->name }}</td>
               <td>{{ $menu->src }}</td>
               <td>{{ $menu->as }}</td>

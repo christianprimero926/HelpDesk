@@ -46,11 +46,7 @@
             <label for="category_id">Modulo:</label>
             <select name="category_id" class="form-control">
               <option value="">General</option>
-              @foreach($categories as $category)
-              <option value="{{ $category->id }}" @if($incident->category_id == $category->id) selected @endif>
-                {{ $category->name }}
-              </option>
-              @endforeach
+              
             </select>
             
           </div>

@@ -33,7 +33,7 @@
                     <tbody>
                         <tr>
                             <td style="text-align:center" id="incident_key">{{ $incident->id }}</td>
-                            <td style="text-align:center" id="incident_project">{{ $incident->project->name }}</td>
+                            <td style="text-align:center" id="incident_project">{{ $incident->project_name }}</td>
                             <td style="text-align:center" id="incident_category">{{ $incident->category_name }}</td>
                             <td style="text-align:center" id="incident_created_at">{{ $incident->created_at }}</td>                        
                         </tr>

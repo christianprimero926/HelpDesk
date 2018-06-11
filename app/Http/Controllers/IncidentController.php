@@ -68,7 +68,9 @@ class IncidentController extends Controller
     public function show($id)
     {
         $incident = Incident::findOrFail($id);
+        //$project = Project::all();
         $messages = $incident->messages;
+        //dd($incident->name);
         return view('incidents.show')->with(compact('incident', 'messages'));
     }
     /**

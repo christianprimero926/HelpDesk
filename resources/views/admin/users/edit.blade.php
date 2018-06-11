@@ -52,7 +52,7 @@
         {{ csrf_field() }}
         <div class="box-body">
           <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+            <span class="input-group-addon"><i class="fa fa-at"></i></span>
             <input type="email" name="email" class="form-control" readonly value="{{ old('email', $user->email) }}">
           </div>
           <br>
