@@ -1,7 +1,8 @@
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>HelpDesk | Gestion de Incidencias</title>
+  <title>HelpDesk | {{ $ruta }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- CSRF Token -->
@@ -30,6 +31,7 @@
    <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
    <!-- iCheck for checkboxes and radio inputs -->
    <link rel="stylesheet" href="/plugins/iCheck/all.css">
+   
    <script>
     window.Laravel = <?php echo json_encode([
       'csrfToken' => csrf_token(),
@@ -64,6 +66,7 @@
     opacity: ;
   }
 </style>
+
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -15,7 +15,7 @@ $menu = MenuController::construirMenu(0, $userLogeado);
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">        
-        <img src="{{ Storage::url( Auth::user()->avatar) }}" class="img-circle" alt="{{ Auth::user()->name }}">
+        <img src="{{ Storage::url( Auth::user()->avatar) }}" class="img-circle" alt="{{ Auth::user()->name }}" title="Imagen de perfil">
       </div>
       <div class="pull-left info">
         <br>
@@ -49,7 +49,7 @@ $menu = MenuController::construirMenu(0, $userLogeado);
       <li @if(request()->is('home')) class="active" @endif>
         <a href="/home">
           <i class="fa fa-dashboard"></i>
-          <span>Dashboard</span>
+          <span>Panel Principal</span>
         </a>
       </li>
       <!--

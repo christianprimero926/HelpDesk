@@ -185,7 +185,7 @@
               @endif
 
               <div class="tab-pane" id="settings">
-                <form enctype="multipart/form-data" action="perfil/{{$user->id}}/avatar" method="POST" class="form-horizontal">
+                <form enctype="multipart/form-data" action="perfil/{{$user->id}}" method="POST" class="form-horizontal">
                   {{ csrf_field() }}
                   <div class="box box-widget widget-user-2">
                     <div class="widget-user-header bg-yellow">

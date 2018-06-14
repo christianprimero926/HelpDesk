@@ -94,6 +94,7 @@
                   <th>Título</th>
                   <th>Reportada por</th>
                   <th>Responsable</th>
+                  <th>Opciones</th>
                 </tr>
               </tfoot>
             </table>

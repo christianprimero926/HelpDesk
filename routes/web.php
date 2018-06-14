@@ -14,123 +14,66 @@
 Route::get('/', function () {
 	return view('welcome');
 });
-//Mailbox
-/*Route::get('/correo', function () {
-	return view('mailbox');
-	});//New E-mail
-Route::get('/correo/nuevo', function () {
-	return view('newmail');
-	});//Read E-mail
-Route::get('/correo/leer', function () {
-	return view('readmail');
-});
-*/
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('Panel Principal');
 Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 
-//Permits
-	Route::get('/permisos', [
-	    'as' => 'permisos.index',
-        'uses' => 'Admin\PermitController@index'
-    ]);
-    
-	Route::post('/permisos', 'Admin\PermitController@store');
+Route::group(['middleware' => ['auth','permisos']], function(){
 	
-	Route::get('/permisos/{id}', [
-	    'as' => 'permisos.id.edit',
-        'uses' => 'Admin\PermitController@edit'
-    ]);
-    Route::post('/permisos/{id}', 'Admin\PermitController@update');
-
-    Route::get('/perfil', [
-	    'as' => 'perfil.index',
-        'uses' => 'Admin\UserController@profile'
-    ]);
+	//User Profile
+	Route::get('/perfil', 'Admin\UserController@profile')->name('Perfil de Usuario');
+    Route::post('perfil/{id}', 'Admin\UserController@update_perfil');
 	
-
-
-
-//['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.']
-
-
-//Route::group(['middleware' => ['auth','permisos']], function(){
+	//Permits
+	Route::get('/permisos', 'Admin\PermitController@index')->name('Permisos');    
+	Route::post('/permisos', 'Admin\PermitController@store')->name('permisos.store');
 	
+	Route::get('/permisos/{id}', 'Admin\PermitController@edit')->name('Editar permisos');
+    Route::post('/permisos/{id}', 'Admin\PermitController@update')->name('permisos.update');    
 
 	//Incidents
-	//Create Incidents
-	Route::get('/ver', [
-	    'as' => 'ver.index',
-        'uses' => 'IncidentController@index'
-    ]);
-	Route::get('/reportar', [
-	    'as' => 'reportar.create',
-        'uses' => 'IncidentController@create'
-    ]);
-    
-	Route::post('/reportar', [
-	    'as' => 'reportar.store',
-        'uses' => 'IncidentController@store'
-    ]);
-	Route::get('/incidencia/{id}/editar', [
-	    'as' => 'incidencia.edit',
-        'uses' => 'IncidentController@edit'
-    ]);
-	Route::post('/incidencia/{id}/editar', [
-	    'as' => 'incidencia.update',
-        'uses' => 'IncidentController@update'
-    ]);
-	Route::get('/ver/{id}', [
-	    'as' => 'ver.show',
-        'uses' => 'IncidentController@show'
-    ]);	
-	Route::post('/ver/asignar', [
-		'as' => 'ver.assign',
-		'uses' => 'IncidentController@assign'
-	]);
-	Route::post('/ver/reasignar', [
-		'as' => 'ver.reassign',
-		'uses' => 'IncidentController@reassign'
-	]);
-	Route::get('/incidencia/{id}/atender', [
-		'as' => 'ver.take',
-		'uses' => 'IncidentController@take'
-	]);
-	Route::get('/incidencia/{id}/resolver', [
-		'as' => 'ver.solve',
-		'uses' => 'IncidentController@solve'
-	]);
-	Route::get('/incidencia/{id}/abrir', [
-		'as' => 'ver.open',
-		'uses' => 'IncidentController@open'
-	]);
-	Route::get('/incidencia/{id}/derivar', [
-		'as' => 'ver.nextLevel',
-		'uses' => 'IncidentController@nextLevel'
-	]);
+	//See Incidents
+	Route::get('/ver', 'IncidentController@index')->name('Ver incidencias');
+	Route::post('/ver/reasignar', 'IncidentController@reassign')->name('ver.reasignar');
 
+	//Report Incident
+	Route::get('/reportar', 'IncidentController@create')->name('Reportar incidencias');    
+	Route::post('/reportar', 'IncidentController@store')->name('reportar.store');
+	//Edit Incident
+	Route::get('/incidencia/{id}/editar', 'IncidentController@edit')->name('Editar incidencia');
+	Route::post('/incidencia/{id}/editar', 'IncidentController@update')->name('incidencia.update');
+	
+	//See incident
+	Route::get('/ver/{id}', 'IncidentController@show')->name('Ver Detalles de la Incidencia');	
+	Route::post('/ver/asignar', 'IncidentController@assign')->name('ver.assign');	
+	Route::get('/incidencia/{id}/atender', 'IncidentController@take')->name('ver.take');
+	Route::get('/incidencia/{id}/resolver', 'IncidentController@solve')->name('ver.solve');
+	Route::get('/incidencia/{id}/abrir', 'IncidentController@open')->name('ver.open');
+	Route::get('/incidencia/{id}/derivar', 'IncidentController@nextLevel')->name('ver.nextLevel');
 
 	//Messages
 	Route::post('/mensajes',[
 		'as' => 'mensajes.store',
 		'uses' => 'MessageController@store'
 	]);
-
+	/*
 	//Calendar Asignament
 	Route::get('/calendario', function () {
 		return view('calendar');
 	});
+	*/
 
 	//statistics charts
-	Route::get('/estadisticas', 'GraficasController@index');
-	Route::get('/estadisticas/{anio}/{mes}', 'GraficasController@registros_mes');
-	Route::get('grafica_publicaciones', 'GraficasController@total_publicaciones');
-
+	Route::get('/estadisticas', 'GraficasController@index')->name('Reportes y Estadisticas');
+	Route::get('/estadisticas/{anio}/{mes}', 'GraficasController@registros_mes')->name('reportes.anio.mes');
+	Route::get('/estadisticas/incidencias/{anio}/{mes}', 'GraficasController@total_incidencias')->name('estadisticas.incidencias');
+	Route::get('/estadisticas/modulos/{anio}/{mes}', 'GraficasController@total_modulos')->name('estadisticas.modulos');
 
 	//User
 	Route::get('/usuarios', [
-	    'as' => 'usuarios.index',
+	    'as' => 'Creación de usuarios',
         'uses' => 'Admin\UserController@index'
     ]);
 	Route::post('/usuarios', [
@@ -139,10 +82,9 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 	]);
 
 	Route::get('/usuarios/{id}', [
-		'as' => 'usuarios.edit',
+		'as' => 'Editar usuario',
 		'uses' => 'Admin\UserController@edit'
-	]);
-	Route::post('perfil/{id}/avatar', 'Admin\UserController@update_avatar');
+	]);	
 	Route::post('/usuarios/{id}', [
 		'as' => 'usuarios.update',
 		'uses' => 'Admin\UserController@update'
@@ -151,10 +93,10 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 		'as' => 'usuarios.delete',
 		'uses' => 'Admin\UserController@delete'
 	]);
-	
+
 	//Profiles
 	Route::get('/perfiles', [
-	    'as' => 'perfiles.index',
+	    'as' => 'Roles de usuarios',
         'uses' => 'Admin\ProfileController@index'
     ]);
 	Route::post('/perfiles', [
@@ -176,7 +118,7 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 
 	//Menu
 	Route::get('/opciones', [
-	    'as' => 'opciones.index',
+	    'as' => 'Menú',
         'uses' => 'Admin\MenuController@index'
     ]);
 	Route::post('/opciones', [
@@ -184,7 +126,7 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 		'uses' => 'Admin\MenuController@store'
 	]);
 	Route::get('/opciones/{id}', [
-		'as' => 'opciones.edit',
+		'as' => 'Editar opciones',
 		'uses' => 'Admin\MenuController@edit'
 	]);
 	Route::post('/opciones/{id}', [
@@ -202,16 +144,15 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 
 	//Project
 	Route::get('/proyectos', [
-	    'as' => 'proyectos.index',
+	    'as' => 'Proyectos',
         'uses' => 'Admin\ProjectController@index'
     ]);
 	Route::post('/proyectos', [
 		'as' => 'proyectos.store',
 		'uses' => 'Admin\ProjectController@store'
-	]);	
-
+	]);
 	Route::get('/proyectos/{id}', [
-		'as' => 'proyectos.edit',
+		'as' => 'Editar proyectos',
 		'uses' => 'Admin\ProjectController@edit'
 	]);
 	Route::post('/proyectos/{id}', [
@@ -257,11 +198,11 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 
 	//Project-User
 	Route::post('/proyecto-usuario', [
-		'as' => 'proyectos-usuario.store',
+		'as' => 'proyectos_usuario.store',
 		'uses' => 'Admin\ProjectUserController@store'
 	]);
 	Route::get('/proyecto-usuario/{id}/eliminar', [
-		'as' => 'proyectos-usuario.delete',
+		'as' => 'proyectos_usuario.delete',
 		'uses' => 'Admin\ProjectUserController@delete'
 	]);
 	/**
@@ -269,10 +210,8 @@ Route::get('/seleccionar/proyecto/{id}', 'HomeController@selectProject');
 	Route::get('/config', [
 		'as' => 'config.index',
 		'uses' => 'ConfigController@index'
-	]);
-	**/
-
-//});
+	]);	**/
+});
 
 
 Route::get('auth/{provider}', 'Auth\RegisterController@redirectToProvider')->name('social.auth');

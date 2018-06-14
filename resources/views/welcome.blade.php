@@ -1,10 +1,19 @@
+<?php
+//use App\Http\Controllers\Admin\MenuController;
+use Illuminate\Support\Facades\Route;
+//Nombre de la Ruta Actual
+ $ruta = Route::currentRouteName();
+  //dd($ruta);
+
+
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />    
     <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Gestion de Incidencias</title>
+    <title>HelpDesk | Bienvenidos</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- CSRF Token -->
@@ -28,7 +37,7 @@
                 </button>                
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">
-                <a class="navbar-brand" href="/home">{{ config('app.name', 'Laravel') }}</a>                                 
+                <a class="navbar-brand" href="/home">{{ Auth::user()->name }}</a>                                 
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::guest())

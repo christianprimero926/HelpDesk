@@ -63,14 +63,12 @@
           
           <div class="form-group">
             <label for="title">Titulo:</label>
-            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
+            <input type="text" name="title" class="form-control" placeholder="Escriba un titulo aqui..." value="{{ old('title') }}">
           </div> 
 
           <div class="form-group">
             <label for="description">Descripcion:</label>
-            <textarea name="description" class="form-control">
-              {{ old('description') }}
-            </textarea>
+            <textarea name="description" class="form-control" placeholder="Escriba una breve descripción..."></textarea>
           </div>
         </div>
         <!-- /.box-body -->

@@ -12,12 +12,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-
         Category::create([
-            'name' => 'General',
-            'project_id' => '0'
-        ]);
-         Category::create([
         	'name' => 'Categoria A1',
         	'project_id' => '1'
         ]);

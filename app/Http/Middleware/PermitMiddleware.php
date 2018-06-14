@@ -24,24 +24,18 @@ class PermitMiddleware
         $ruta = Route::currentRouteName();
         //dd($ruta);
         $idRolActual = Auth::User()->profile_id;
-
+        //dd($idRolActual);
         $idMenuActual = Menu::where('as', $ruta);
-
-
+        //dd($idMenuActual->get());
         if($idMenuActual->count()){
-            $permisos = Permit::where('menu_id',$idMenuActual->first()->id)->where('profile_id');
-            //dd($permisos);
+            $permisos = Permit::where('menu_id',$idMenuActual->first()->id)->where('profile_id',$idRolActual);
             if ($permisos->count()) {
                  return $next($request);
             }else{
                 
-               return redirect('/home')->with('notification-warning', 'No tienes permisos.');
-                //return view('/home')->with('notification', 'No tienes permisos.');
-                //return redirect('/');
-                //return back()->with('notification', 'La nueva opción ha sido registrada exitosamente.');
+               return redirect('/home')->with('notification-warning', 'NO Posees permisos para acceder a esta vista.');                
             }
         }
-
         return $next($request);
     }
 }

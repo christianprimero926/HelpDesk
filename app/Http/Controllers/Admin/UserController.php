@@ -10,50 +10,12 @@ use App\Profile;
 use App\ProjectUser;
 use App\Incident;
 
-
-/**
-<div class="box-footer box-comments">
-@foreach($messages as $message)
-<div class="box-comment">
-<!-- User image -->
-<img class="img-circle img-sm" src="{{$message->user->avatar}}" alt="User Image">
-
-<div class="comment-text">
-<span class="username">
-{{ $message->user->name }}
-<span class="text-muted pull-right">{{ $message->created_at }}</span>
-</span><!-- /.username -->
-{{ $message->message }}
-</div>
-<!-- /.comment-text -->
-</div>
-@endforeach
-
-</div>
-<!-- /.box-footer -->
-<div class="box-footer">
-<form action="/mensajes" method="POST">
-{{ csrf_field() }}
-<input type="hidden" name="incident_id" value="{{ $incident->id }}">
-<img class="img-responsive img-circle img-sm" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
-<!-- .img-push is used to add margin to elements next to floating images -->
-
-
-<div class="img-push form inline">
-<input type="text" name="message" placeholder="Escribe un Mensaje ..." class="form-control">
-<span class="input-group-btn">                
-<button type="submit" class="btn btn-success btn-flat">Enviar</button>
-</span>
-</div>
-</form>
-</div>
-<!-- /.box-footer -->
- */
-
-
-
 class UserController extends Controller
 {
+	/**
+	 * Funcion para mostrar las consultas en perfil
+	 * @return type
+	 */
 	public function profile()
 	{
 		
@@ -74,17 +36,28 @@ class UserController extends Controller
         return view('profile.index')->with(compact('incidents','user','my_incidents', 'pending_incidents', 'incidents_by_me', 'num_my_incidencias', 'num_incidencias_by_me', 'incident_total', 'solve_incidents'));
 		
 	}
-	public function update_avatar($id,Request $request)
+	/**
+	 * Para actualizar el perfil
+	 * @param type $id 
+	 * @param Request $request 
+	 * @return type
+	 */
+	public function update_perfil($id,Request $request)
 	{		
 		$user = User::findOrFail($id);
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
-		$user->password = bcrypt($request->input('password'));
+
+		if($request->input('password')){
+			$password = $request->input('password');
+			if ($request->$password) 
+			$user->password = bcrypt($password);
+		}
 		if ($request->hasFile('avatar')) {
 			$user->avatar = $request->file('avatar')->store('public');
 		}
 		$user->save();
-		return back()->with('notification', 'Imagen Modificada exitosamente.');
+		return back()->with('notification', 'Se han modificado los datos exitosamente.');
 	}
 
     public function index()
@@ -135,11 +108,11 @@ class UserController extends Controller
 
 		$user = User::find($id);
 		$user->name = $request->input('name');
-
-		$password = $request->input('password');
-		if ($password) 
-			$user->password = bcrypt($password);		
-		
+		if($request->input('password')){
+			$password = $request->input('password');
+			if ($password) 
+				$user->password = bcrypt($password);			
+		}		
 		$user->save();
 
 		return back()->with('notification', 'Usuario modificado exitosamente.');
@@ -153,3 +126,45 @@ class UserController extends Controller
     	return back()->with('notification', 'El usuario fue dado de baja satisfactoriamente.');
     }
 }
+
+
+
+/**
+<div class="box-footer box-comments">
+@foreach($messages as $message)
+<div class="box-comment">
+<!-- User image -->
+<img class="img-circle img-sm" src="{{$message->user->avatar}}" alt="User Image">
+
+<div class="comment-text">
+<span class="username">
+{{ $message->user->name }}
+<span class="text-muted pull-right">{{ $message->created_at }}</span>
+</span><!-- /.username -->
+{{ $message->message }}
+</div>
+<!-- /.comment-text -->
+</div>
+@endforeach
+
+</div>
+<!-- /.box-footer -->
+<div class="box-footer">
+<form action="/mensajes" method="POST">
+{{ csrf_field() }}
+<input type="hidden" name="incident_id" value="{{ $incident->id }}">
+<img class="img-responsive img-circle img-sm" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+<!-- .img-push is used to add margin to elements next to floating images -->
+
+
+<div class="img-push form inline">
+<input type="text" name="message" placeholder="Escribe un Mensaje ..." class="form-control">
+<span class="input-group-btn">                
+<button type="submit" class="btn btn-success btn-flat">Enviar</button>
+</span>
+</div>
+</form>
+</div>
+<!-- /.box-footer -->
+ */
+
