@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Category;
+use App\User;
 
-class CategoriesTableSeeder extends Seeder
+class ClientTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,8 +12,9 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Category::class)
-        ->times(10)
+        //Client
+        factory(App\User::class)
+        ->times(60)
         ->create();
     }
 }

@@ -31,7 +31,8 @@ class IncidentController extends Controller
         $selected_project_id = $user->selected_project_id;
 
         $users = User::where('profile_id',2)->get();        
-        $incidents = Incident::where('project_id', $selected_project_id)->get();                
+        $incidents = Incident::where('project_id', $selected_project_id)->get();
+        $incidents = Incident::all();                
         return view('incidents.index')->with(compact('incidents','users'));
     }
 

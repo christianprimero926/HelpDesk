@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('head')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+@endsection
 @section('content')
 
 <section class="content-header">
@@ -29,7 +32,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Código</th>
@@ -81,7 +84,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="example3" class="table table-bordered table-striped">
+            <table id="tabla1" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Código</th>
@@ -140,7 +143,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="example4" class="table table-bordered table-striped">
+            <table id="tabla2" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Código</th>
@@ -193,3 +196,40 @@
 
 
 @endsection
+@section('scripts')
+  
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
+
+  <script type="text/javascript">
+
+    $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+      'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5', 'print'
+      ]
+    } );
+    $('#tabla1').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+      'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5', 'print'
+      ]
+    } );
+    $('#tabla2').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+      'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5', 'print'
+      ]
+    } );
+
+  </script>
+  @endsection

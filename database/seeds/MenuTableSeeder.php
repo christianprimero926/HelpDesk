@@ -560,7 +560,7 @@ class MenuTableSeeder extends Seeder
             'as' => 'niveles.update',            
             'show' => 0                        
         ]);
-    //55
+    //56
         Menu::create([
             'name' => 'eliminar niveles',
             'src' => 'niveles/{id}/eliminar',
@@ -570,7 +570,7 @@ class MenuTableSeeder extends Seeder
             'as' => 'niveles.delete',            
             'show' => 0                        
         ]);
-    //55
+    //57
         Menu::create([
             'name' => 'Opciones asignacion de proyectos',
             'src' => '#',
@@ -579,24 +579,63 @@ class MenuTableSeeder extends Seeder
             'id_padre' => 0,
             'show' => 0 
         ]);
-    //56
+    //58
         Menu::create([
             'name' => 'asignar proyecto',
             'src' => 'proyecto-usuario',
             'orden' => 1,
             'icon' => '#',
-            'id_padre' => 55,
+            'id_padre' => 57,
             'as' => 'proyectos_usuario.store',            
             'show' => 0                        
         ]);
-    //57
+    //59
         Menu::create([
             'name' => 'eliminar asignacion de proyecto',
             'src' => 'proyecto-usuario/{id}/eliminar',
             'orden' => 2,
             'icon' => '#',
-            'id_padre' => 55,
+            'id_padre' => 57,
             'as' => 'proyectos_usuario.delete',            
+            'show' => 0                        
+        ]);
+    //60
+        Menu::create([
+            'name' => 'Opciones ver graficos estadisticos',
+            'src' => '#',
+            'orden' => 0,
+            'icon' => '#',
+            'id_padre' => 0,
+            'show' => 0 
+        ]);
+    //61
+        Menu::create([
+            'name' => 'ver reportes por mes',
+            'src' => 'estadisticas/{anio}/{mes}',
+            'orden' => 1,
+            'icon' => '#',
+            'id_padre' => 60,
+            'as' => 'reportes.anio.mes',            
+            'show' => 0                        
+        ]);
+    //62
+        Menu::create([
+            'name' => 'ver reportes de incidencias',
+            'src' => 'estadisticas/incidencias/{anio}/{mes}',
+            'orden' => 2,
+            'icon' => '#',
+            'id_padre' => 60,
+            'as' => 'estadisticas.incidencias',            
+            'show' => 0                        
+        ]);
+    //63
+        Menu::create([
+            'name' => 'ver reportes de modulos',
+            'src' => 'estadisticas/modulos/{anio}/{mes}',
+            'orden' => 3,
+            'icon' => '#',
+            'id_padre' => 60,
+            'as' => 'estadisticas.modulos',            
             'show' => 0                        
         ]);
         Menu::create([            

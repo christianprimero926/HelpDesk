@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
                 </button>                
             </div>
             <div class="collapse navbar-collapse" id="navbarToggler">
-                <a class="navbar-brand" href="/home">{{ Auth::user()->name }}</a>                                 
+                <a class="navbar-brand" href="/home">{{ config('app.name', 'Laravel') }}</a>                                 
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::guest())

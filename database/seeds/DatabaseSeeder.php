@@ -17,11 +17,14 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriesTableSeeder::class);        
         $this->call(LevelsTableSeeder::class);
         $this->call(SupportsTableSeeder::class);
+        $this->call(ClientTableSeeder::class);
         $this->call(ProjectsUserTableSeeder::class);
         $this->call(IncidentsTableSeeder::class);
         $this->call(FullCalendarEventsTableSeeder::class);
         $this->call(MenuTableSeeder::class);
-        $this->call(PermitTableSeeder::class);
+        $this->call(PermitTableSeeder::class);        
+        $this->call(PermitSupportSeeder::class);
+        $this->call(PermitClientTableSeeder::class);
 
     }
 }

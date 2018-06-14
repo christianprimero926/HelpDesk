@@ -31,7 +31,7 @@ $menu = MenuController::construirMenu(0, $userLogeado);
           <i class="fa fa-list-alt"></i>
           <span>
             <select id="list-of-projects" class="form-control select2" style="width: 85%;">
-              <option value="">Seleccione un proyecto</option>
+              <option value="0">Seleccione un proyecto</option>
               @foreach (auth()->user()->list_of_projects as $project)
               <option value="{{ $project->id }}" 
                 @if($project->id == auth()->user()->selected_project_id)

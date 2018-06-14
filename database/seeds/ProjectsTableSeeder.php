@@ -12,14 +12,8 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run()
     {
-        Project::create([
-        	'name' => 'Proyecto A',
-        	'description' => 'El proyecto A consiste en desarrollar un sitio Web moderno.'
-        ]);
-
-        Project::create([
-        	'name' => 'Proyecto B',
-        	'description' => 'El proyecto B consiste en desarrollar una aplicacion android.'
-        ]);
+        factory(App\Project::class)
+        ->times(20)
+        ->create();
     }
 }

@@ -12,16 +12,9 @@ class ProjectsUserTableSeeder extends Seeder
      */
     public function run()
     {
-        ProjectUser::create([
-        	'project_id' => 1,
-        	'user_id' => 2,
-        	'level_id' => 1        	
-        ]);
-
-        ProjectUser::create([
-        	'project_id' => 1,
-        	'user_id' => 2,
-        	'level_id' => 2        	
-        ]);       
+        //Client
+        factory(App\ProjectUser::class)
+        ->times(20)
+        ->create();       
     }
 }

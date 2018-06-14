@@ -115,7 +115,7 @@ function cargar_grafica_barras_modules(anio,mes){
     var options={
      chart: {
         renderTo: 'div_grafica_barras_modules',
-        type: 'column'
+        type: 'bar'
     },
     title: {
         text: 'Incidencias por Modulo'
@@ -123,14 +123,16 @@ function cargar_grafica_barras_modules(anio,mes){
     xAxis: {
         categories: [],
         title: {
-            text: 'MODULOS'
-        },
-        crosshair: true
+            text: 'MODULOS'            
+        }
     },
     yAxis: {
         min: 0,
         title: {
             text: 'NUMERO DE INCIDENCIAS'
+        },
+        labels: {
+            overflow: 'justify'
         }
     },
     tooltip: {
@@ -142,10 +144,25 @@ function cargar_grafica_barras_modules(anio,mes){
         useHTML: true
     },
     plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
         }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+        shadow: true
+    },
+    credits: {
+        enabled: false
     },
     series: [{
         name: 'Incidencias registradas',

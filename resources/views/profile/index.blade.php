@@ -133,7 +133,7 @@
                     <div class="user-block">
                       <img class="img-circle" src="{{ Storage::url( $incident->avatar_client) }}" alt="User Image">
                       <span class="username">{{ $incident->client_name }}</span>
-                      <span class="description">ID Incidencia :<a href="/ver/{{ $incident->id }}">{{ $incident->id }}</a></span>
+                      <span class="description">ID Incidencia : <a href="/ver/{{ $incident->id }}">{{ $incident->id }}</a></span>
                       <span class="description">Incidencia creada el - {{$incident->created_at->format('d/m/Y')}}</span>
                     </div>                  <!-- /.user-block -->
                     <div class="box-tools">                    

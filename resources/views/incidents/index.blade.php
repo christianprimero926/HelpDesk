@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('head')
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+@endsection
 @section('content')
 
 <section class="content-header">
@@ -41,7 +44,7 @@
           </div>
           <!-- /.box-header -->
           <div class="box-body">
-            <table id="example1" class="table table-bordered table-striped">
+            <table id="example" class="table table-bordered table-striped">
               <thead>
                 <tr>
                   <th>Código</th>                    
@@ -119,11 +122,11 @@
         <form action="/ver/asignar" method="POST">
           {{ csrf_field() }}
           <div class="modal-body">
-            <input type="hidden" name="incident_id" id="incident_id" value="">         
+            <input type="hidden" name="incident_id" id="incident_id" value="incident_id">         
             <div class="form-group">
               <label for="support_id">Seleccione el usuario a asignar:</label>            
               <select name="support_id" id="support_id" class="form-control select2" style="width: 100%;">
-                <option value="">Seleccione una opción</option>                      
+                <option value="0">Seleccione una opción</option>                      
                 @foreach ($users as $user)                                           
                 <option value="{{ $user->id }}" @if($user->id) selected @endif>{{ $user->name }}</option>
                 @endforeach
@@ -144,4 +147,26 @@
   @endsection
   @section('scripts')
   <script src="/js/admin/incidents/assign.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+
+
+  <script type="text/javascript">
+
+    $('#example').DataTable( {
+      dom: 'Bfrtip',
+      buttons: [
+      'copyHtml5', 'excelHtml5', 'pdfHtml5', 'csvHtml5', 'print'
+      ]
+    } );
+
+  </script>
   @endsection
