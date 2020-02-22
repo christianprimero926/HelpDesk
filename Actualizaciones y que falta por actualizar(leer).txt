@@ -5,7 +5,7 @@
 ##Vista App
 -se modifico ya que se encontraba un error al incorporar el calendario
 -se organizo un poco
-#se hicieron validaciones pequeñas para el tipo de usuario
+#se hicieron validaciones pequeï¿½as para el tipo de usuario
 #no se han implementado el formulario para crear usuarios
 #falta agregarle campos al formulario de reportar una incidencia
 #falta validar que otros usuarios no puedan entrar a las vistas de usuarios con mayor rango(solucionado) 
@@ -28,4 +28,5 @@
 
 #en Documentacion falta terminar la primera entrega
 #no se ha hecho el manual desarrollador
+#Falta corregir la imagen de usuario por defecto
 
