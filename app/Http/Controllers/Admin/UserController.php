@@ -23,17 +23,24 @@ class UserController extends Controller
         $selected_project_id = $user->selected_project_id;
         $users = User::where('profile_id',2)->get();        
         $incidents = Incident::where('project_id', $selected_project_id)->get();
-        if($user->is_support){
+        if($user->is_support or $user->is_admin){
             $my_incidents = Incident::where('project_id', $selected_project_id)->where('support_id', $user->id)->get();
             $num_my_incidencias = $my_incidents->count();
             $solve_incidents = $my_incidents->where('active', 0)->count();
             $projectUser = ProjectUser::where('project_id', $selected_project_id)->where('user_id', $user->id)->first();
-            $pending_incidents = Incident::where('support_id', null)->where('level_id', $projectUser->level_id)->get();
+			$pending_incidents = Incident::where('support_id', null)->where('level_id', $projectUser->level_id)->get();
+			$incident_total = Incident::all()->count();
+        	$incidents_by_me = Incident::where('client_id', $user->id)->where('project_id', $selected_project_id)->get();
+        	$num_incidencias_by_me = $incidents_by_me->count();
+			
+			return view('profile.index')->with(compact('incidents','user','my_incidents', 'pending_incidents', 'incidents_by_me', 'num_my_incidencias', 'num_incidencias_by_me', 'incident_total', 'solve_incidents'));
         }
         $incident_total = Incident::all()->count();
         $incidents_by_me = Incident::where('client_id', $user->id)->where('project_id', $selected_project_id)->get();
         $num_incidencias_by_me = $incidents_by_me->count();
-        return view('profile.index')->with(compact('incidents','user','my_incidents', 'pending_incidents', 'incidents_by_me', 'num_my_incidencias', 'num_incidencias_by_me', 'incident_total', 'solve_incidents'));
+		
+		return view('profile.index')->with(compact('incidents','user', 'incidents_by_me', 'num_incidencias_by_me', 'incident_total'));
+        
 		
 	}
 	/**

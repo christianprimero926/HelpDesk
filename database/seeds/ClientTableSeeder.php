@@ -12,6 +12,11 @@ class ClientTableSeeder extends Seeder
      */
     public function run()
     {
+        User::create([
+            'name' => 'Cliente',
+            'email' => 'cliente@mail.com',
+            'password' => bcrypt('1234567'),
+        ]);
         //Client
         factory(App\User::class)
         ->times(60)
