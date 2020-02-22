@@ -14,7 +14,7 @@ class ProjectsUserTableSeeder extends Seeder
     {
         //Client
         factory(App\ProjectUser::class)
-        ->times(20)
+        ->times(25)
         ->create();       
     }
 }

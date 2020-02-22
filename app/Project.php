@@ -52,7 +52,7 @@ class Project extends Model
     
     public function getFirstLevelIdAttribute()
     {
-        return $this->levels->first()->id;
+        return $this->levels->first();
     }
 
     public function getDescriptionShortAttribute()

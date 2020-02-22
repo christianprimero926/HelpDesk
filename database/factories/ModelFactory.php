@@ -76,7 +76,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\ProjectUser::class, function (Faker\Generator $faker) {
      return [
          'project_id' => $faker->numberBetween($min = 1, $max = 20),
-         'user_id' => $faker->numberBetween($min = 2, $max = 9),
+         'user_id' => $faker->numberBetween($min = 1, $max = 9),
          'level_id' => $faker->numberBetween($min = 1, $max = 10)
          
      ];

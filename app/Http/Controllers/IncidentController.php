@@ -46,7 +46,9 @@ class IncidentController extends Controller
         $incident_id = $request->input('incident_id');
         $incident = Incident::find($incident_id);
         $incident->support_id = $request->input('support_id');
+        // dd($incident->support_id);
         $incident->save();
+        // dd($incident);
 
         return back()->with('notification', 'Se ha asignado la incidencia exitosamente.');
     }

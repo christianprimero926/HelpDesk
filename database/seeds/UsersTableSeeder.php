@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
         User::create([
         	'name' => 'Christian',
         	'email' => 'admin@hotmail.com',
-        	'password' => bcrypt('19972000'),
+            'password' => bcrypt('19972000'),
+            'avatar' => 'https://www.sogapar.info/wp-content/uploads/2015/12/default-user-image.png',
         	'profile_id' => 1
         ]);
         
